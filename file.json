@@ -1,0 +1,38 @@
+[
+  {
+    "image": "./img/maxrez1.jpg",
+    "name": "Intro Mong Em Hạnh Phúc Cuộc Đời Này",
+    "author": "buitruonglinh",
+    "mp3": "./mp3/Intro.mp3"
+  },
+  {
+    "image": "./img/maxrez1.jpg",
+    "name": "Chỉ Là Không Có Nhau",
+    "author": "buitruonglinh",
+    "mp3": "./mp3/bai1.mp3"
+  },
+  {
+    "image": "./img/maxrez1.jpg",
+    "name": "Em Ơi Là Em",
+    "author": "buitruonglinh",
+    "mp3": "./mp3/bai2.mp3"
+  },
+  {
+    "image": "./img/maxrez1.jpg",
+    "name": "Từng Ngày Như Mãi Mãi",
+    "author": "buitruonglinh",
+    "mp3": "./mp3/bai3.mp3"
+  },
+  {
+    "image": "./img/maxrez1.jpg",
+    "name": "Từng Ngày Yêu Em",
+    "author": "buitruonglinh",
+    "mp3": "./mp3/bai4.mp3"
+  },
+  {
+    "image": "./img/maxrez1.jpg",
+    "name": "Vì Điều Gì",
+    "author": "buitruonglinh ft.dangrangto",
+    "mp3": "./mp3/bai5.mp3"
+  }
+]

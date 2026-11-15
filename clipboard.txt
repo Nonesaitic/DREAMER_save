@@ -1,0 +1,8 @@
+    <div class="hot-song-actions">
+        <button class="hot-song-add-btn" title="Thêm vào playlist">
+          <i class="fa-solid fa-square-plus"></i>
+        </button>
+        <button class="hot-song-delete-btn" title="Xóa bài hát">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div> 

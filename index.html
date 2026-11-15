@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DREAMER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;900&family=Playfair+Display:wght@700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash-inner">
+      <img class="splash-logo" src="./logo.svg" alt="">
+      <div class="splash-bar"></div>
+    </div>
+  </div>
+
+
+
+  <nav class="navbar">
+    <span class="logo_desktop"><h1> DREAMERS</h1></span>
+    <div class="links">
+      <a href="#" class="link link1">Home</a>
+      <a href="#" class="link link2">About</a>
+      <a href="#" class="link link3">Original</a>
+      <a href="#myPlaylistsSection" class="link link4" id="navPlaylistsLink">Playlists</a>
+    </div>
+  </nav>
+  
+
+  <main class="main">
+    <section class="search-section">
+      <h1 class="titlesearch">Tìm Kiếm</h1>
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Tìm bài hát, nghệ sĩ..." autocomplete="off">
+        <button id="searchBtn">Tìm</button>
+      </div>
+
+      <details class="navidrome-settings" id="dreamerSettings">
+        <summary><i class="fa-solid fa-sliders"></i> Cài đặt DREAMER <span id="youtubeStatus">Chưa cấu hình API</span></summary>
+        <div class="navidrome-settings-body">
+          <label for="youtubeApiKey">YouTube Data API Key</label>
+          <input id="youtubeApiKey" type="password" autocomplete="off" placeholder="Dán API Key tại đây">
+          <div class="navidrome-settings-actions"><button type="button" id="saveYoutubeSettings">Lưu cài đặt</button><button type="button" id="clearYoutubeSettings" class="nd-clear">Xóa API Key</button></div>
+          <small>YouTube phát bằng trình nhúng; offline dùng file nhạc của bạn hoặc nguồn được phép tải.</small>
+        </div>
+      </details>
+
+      <div class="suggestions" id="suggestions"></div>
+
+      <!-- Online search results stay directly beneath the search bar. -->
+      <section class="section search-results-inline" id="searchResultSection" hidden>
+        <div class="section-title">
+          <h2>Kết quả tìm kiếm</h2>
+        </div>
+        <p class="online-search-note" id="onlineSearchNote">YouTube · tìm nhạc và phát bằng trình nhúng chính thức của YouTube.</p>
+        <div class="song-grid" id="searchResults"></div>
+      </section>
+    </section>
+
+
+    <section class="hero">
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-content">
+        <span class="hero-label">MUSIC COLLECTION</span>
+        <h1>Bùi Trường Linh</h1>
+        <p>Khám phá bài hát, nghệ sĩ và lyrics yêu thích của bạn.</p>
+      </div>
+
+      <div class="hero-continue">
+        <span class="hero-kicker">Continue</span>
+        <h2 id="heroTitle">DREAMER</h2>
+        <button class="hero-play" id="heroPlay" type="button">
+          <i class="fa-solid fa-play"></i> <span>Play</span>
+        </button>
+      </div>
+    </section>
+
+      <div class="category-header">
+        <h1 class="title-category">Thể Loại</h1>
+        <p class="more">Xem thêm...</p>
+      </div>
+
+      <section class="category">
+        <div class="ballad"><h4>Ballad</h4></div>
+        <div class="randb"><h4>R&B</h4></div>
+        <div class="rock"><h4>Rock</h4></div>
+        <div class="rap"><h4>Rap</h4></div>
+        <div class="edm"><h4>EDM</h4></div>
+        <div class="acoustic"><h4>Acoustic</h4></div>
+        <div class="bolero"><h4>Bolero</h4></div>
+        <div class="pop"><h4>Pop</h4></div>
+      </section>
+    <section class="section" id="myPlaylistsSection">
+      <div class="section-title">
+        <h2>Playlist của bạn</h2>
+        <button class="section-title-action" id="createPlaylistBtn">
+          <i class="fa-solid fa-plus"></i>
+          Tạo playlist
+        </button>
+      </div>
+
+      <div class="playlist-grid" id="myPlaylistsGrid"></div>
+
+      <p class="playlist-empty-hint" id="myPlaylistsEmpty">
+        Chưa có playlist nào. Tạo playlist đầu tiên của bạn nhé!
+      </p>
+    </section>
+
+
+    <section class="section">
+      <div class="section-title">
+        <h2>Đề xuất cho bạn</h2>
+        <span>Recommended</span>
+      </div>
+
+      <div class="song-grid" id="recommendedSongs"></div>
+    </section>
+
+
+    <section class="section">
+      <div class="section-title">
+        <h2>Trending</h2>
+      </div>
+
+      <div class="song-list" id="hotSongs"></div>
+    </section>
+
+
+    <div class="loading" id="loading" hidden>
+      <div class="loader"></div>
+      <span>Đang tìm kiếm...</span>
+    </div>
+
+
+    <div class="empty" id="empty" hidden>
+      <i class="fa-solid fa-music"></i>
+      <p>Không tìm thấy bài hát</p>
+    </div>
+  </main>
+  
+    <div class="player-overlay" id="playerOverlay">
+    <div class="music-player">
+      <button class="player-close" id="playerClose">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    
+      <div class="player-main">
+        <img class="player-cover" id="playerCover" src="" alt="Album">
+        <div id="youtubePlayerFrame" class="youtube-player-frame" hidden></div>
+    
+        <div class="player-info">
+          <h2 id="playerTitle">Tên bài hát</h2>
+          <p id="playerArtist">Nghệ sĩ</p>
+        </div>
+    
+        <div class="player-progress">
+          <span id="currentTime">0:00</span>
+          <input type="range" id="progressBar" min="0" max="100" value="0">
+          <span id="duration">0:00</span>
+        </div>
+    
+        <div class="player-controls">
+          <button id="shuffleBtn" class="control-toggle-btn" title="Phát ngẫu nhiên: Tắt">
+            <i class="fa-solid fa-shuffle"></i>
+          </button>
+
+          <button id="prevBtn">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+
+          <button class="play-btn" id="playBtn">
+            <i class="fa-solid fa-play"></i>
+          </button>
+
+          <button id="nextBtn">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+
+          <button id="repeatBtn" class="control-toggle-btn" title="Lặp lại: Tắt">
+            <i class="fa-solid fa-repeat"></i>
+            <span class="repeat-one-badge">1</span>
+          </button>
+        </div>
+    
+        <div class="player-volume">
+          <i class="fa-solid fa-volume-low"></i>
+          <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="1">
+          <i class="fa-solid fa-volume-high"></i>
+        </div>
+      </div>
+      <div class="player-recommend">
+        <div class="player-recommend-title">
+          <h3>Gợi ý cho bạn</h3>
+        </div>
+    
+        <div class="player-recommend-list" id="playerRecommendList"></div>
+      </div>
+    </div>
+    </div>
+  <script src="main.js"></script>
+</body>
+</html>

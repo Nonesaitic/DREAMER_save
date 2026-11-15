@@ -1,0 +1,4157 @@
+:root{
+  --bg:#0f0f0f;
+  --black:#000;
+  --white:#fff;
+
+  --Pop:"Playfair Display","Georgia","Times New Roman",serif;
+  --Plus:"Be Vietnam Pro","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --Accent:"Space Grotesk","Be Vietnam Pro","Segoe UI",sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  width:100%;
+}
+
+body{
+  width:100%;
+  min-height:100vh;
+  padding:10px;
+  background:var(--bg);
+  font-family:var(--Plus);
+  -webkit-tap-highlight-color:transparent;
+}
+
+.navbar{
+  position:sticky;
+  top:12px;
+  z-index:500;
+  width:100%;
+  height:64px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 16px;
+  background:rgba(20,20,20,.75);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid #232323;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+.titlesearch{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:5px;
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:26px;
+  font-weight:800;
+  letter-spacing:-.04em;
+}
+.logo_desktop{
+  display:flex;
+  align-items:center;
+  border-radius: 2px 8px 2px 8px;
+  height: 100%;
+  width: 210px;
+  padding: 0 15px ;
+  background: radial-gradient(circle at top left, #ff8615, #4aa3ff 40%, #2f6bff)
+}
+.logo_desktop h1{
+  letter-spacing: .075em;
+  font-size: 24px;
+  font-family: var(--Pop);
+}
+
+.links{
+  display:flex;
+  align-items:center;
+  gap:32px;
+  margin:0 auto;
+  padding: 5px 12px;
+  border-right: 1px solid #7c7c7c;
+  border-left: 1px solid #7c7c7c;
+}
+
+.links .link{
+  position:relative;
+  padding-bottom:4px;
+  color:#bbb;
+  font-family:var(--Plus);
+  font-size:14px;
+  font-weight:500;
+  text-decoration:none;
+  transition:color .25s ease;
+}
+
+.links .link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  border-radius:2px;
+  background:linear-gradient(90deg,#4aa3ff,#2f6bff);
+  transition:width .25s ease;
+}
+
+.links .link:hover{
+  color:#fff;
+}
+
+.links .link:hover::after{
+  width:100%;
+}
+
+
+/* ==============================
+   MAIN
+================================ */
+
+.main{
+  width:100%;
+  max-width:1200px;
+  margin:30px auto 0;
+  padding:0 5px;
+}
+
+
+/* ==============================
+   SEARCH
+================================ */
+
+.search-section{
+  position:relative;
+  width:100%;
+  max-width:700px;
+  margin:0 auto;
+}
+
+.search-box{
+  width:100%;
+  height:58px;
+  display:flex;
+  align-items:center;
+  padding:6px 7px 6px 20px;
+  background:#1b1b1b;
+  border:1px solid #292929;
+  border-radius:18px;
+  transition:.25s ease;
+}
+
+.search-box:focus-within{
+  border-color:#555;
+  box-shadow:0 0 0 4px rgba(255,255,255,.04);
+}
+
+.search-box > i{
+  margin-right:12px;
+  color:#777;
+  font-size:17px;
+}
+
+.search-box input{
+  flex:1;
+  min-width:0;
+  border:none;
+  outline:none;
+  background:transparent;
+  color:var(--white);
+  font-family:var(--Plus);
+  font-size:15px;
+}
+
+.search-box input::placeholder{
+  color:#777;
+}
+
+.search-box button{
+  height:46px;
+  padding:0 20px;
+  border:none;
+  border-radius:13px;
+  background:var(--white);
+  color:var(--black);
+  font-family:var(--Plus);
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.search-box button:hover{
+  transform:translateY(-2px);
+}
+
+.search-box button:active{
+  transform:scale(.95);
+}
+
+
+/* ==============================
+   SUGGESTIONS
+================================ */
+
+.suggestions{
+  position:absolute;
+  top:calc(100% + 8px);
+  left:0;
+  right:0;
+  z-index:20;
+  display:none;
+  padding:6px;
+  background:#191919;
+  border:1px solid #292929;
+  border-radius:15px;
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.suggestion-item{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.suggestion-item:hover{
+  background:#292929;
+}
+
+.suggestion-item img{
+  width:40px;
+  height:40px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.suggestion-info{
+  min-width:0;
+}
+
+.suggestion-info strong{
+  display:block;
+  color:var(--white);
+  font-family:var(--Plus);
+  font-size:14px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.suggestion-info span{
+  display:block;
+  margin-top:2px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:12px;
+}
+
+
+/* ==============================
+   HERO
+================================ */
+
+.hero{
+  width:100%;
+  min-height:280px;
+  display:flex;
+  align-items:flex-end;
+  position:relative;
+  overflow:hidden;
+  margin-top:30px;
+  padding:35px;
+  border-radius:25px;
+  background-color: #000;
+  background-image:
+    linear-gradient(to right,#00000099 20%,transparent 60%),
+    url('./img/maxrez1.jpg');
+  background-size: contain;
+  background-position:center,right;
+  background-repeat:no-repeat,no-repeat;
+}
+
+.hero-content{
+  position:relative;
+  z-index:1;
+}
+
+.hero-label{
+  color:#888;
+  font-family:var(--Plus);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:2px;
+}
+
+.hero h1{
+  margin-top:10px;
+  color:var(--white);
+  font-family:var(--Pop);
+  font-size:clamp(35px,6vw,65px);
+  line-height:1;
+}
+
+.hero p{
+  max-width:500px;
+  margin-top:15px;
+  color:#999;
+  font-family:var(--Plus);
+  font-size:14px;
+}
+
+
+/* ==============================
+   SECTION
+================================ */
+
+.section{
+  margin-top: 10px;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.section-title h2{
+  color:var(--white);
+  font-family:var(--Pop);
+  font-size:25px;
+}
+
+
+/* ==============================
+   SONG GRID
+================================ */
+
+.song-grid{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:4px 2px 12px;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+}
+
+.song-grid::-webkit-scrollbar{
+  display:none;
+}
+
+.song-card{
+  flex:0 0 220px;
+  overflow:hidden;
+  background:#171717;
+  border:1px solid #242424;
+  border-radius:17px;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.song-card:hover{
+  transform:translateY(-5px);
+  border-color:#444;
+}
+
+.song-card img{
+  width:100%;
+  aspect-ratio:1/1;
+  display:block;
+  object-fit:cover;
+}
+
+.song-card-info{
+  padding:13px;
+}
+
+.song-card-info h3{
+  color:var(--white);
+  font-family:var(--Plus);
+  font-size:14px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.song-card-info p{
+  margin-top:4px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+
+/* ==============================
+   HOT SONG
+================================ */
+
+.song-list{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding: 12px 2px 12px;
+  scrollbar-width:none;
+  border-top: 1px solid #252525;
+  border-bottom: 1px solid #252525;
+  margin-bottom: 100px;
+}
+
+.song-list::-webkit-scrollbar{
+  display:none;
+}
+
+.hot-song{
+  position:relative;
+  flex:0 0 330px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:10px 14px;
+  overflow:hidden;
+  background:#151515;
+  border:1px solid #222;
+  border-radius:4px 16px 4px 16px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.hot-song::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:3px;
+  background:linear-gradient(180deg,#4aa3ff,#2f6bff);
+  opacity:.4;
+  transition:.2s ease;
+}
+
+.hot-song:hover{
+  background:#1d1d1d;
+  border-color:#333;
+  transform:translateY(-3px);
+}
+
+.hot-song:hover::before{
+  width:4px;
+  opacity:1;
+}
+
+.hot-number{
+  width:28px;
+  flex-shrink:0;
+  font-family:var(--Accent);
+  font-size:19px;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  text-align:center;
+  background:linear-gradient(180deg,#fff,#777);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  transition:.2s ease;
+}
+
+.hot-song:hover .hot-number{
+  background:linear-gradient(180deg,#4aa3ff,#2f6bff);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+
+.hot-song img{
+  width:50px;
+  height:50px;
+  object-fit:cover;
+  border-radius:4px 12px 4px 12px;
+}
+
+.hot-info{
+  min-width:0;
+  flex:1;
+}
+
+.hot-info h3{
+  color:var(--white);
+  font-family:var(--Plus);
+  font-size:14px;
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.hot-info p{
+  margin-top:3px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.hot-play{
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  border-radius:4px 12px 4px 12px;
+  background:#242424;
+  color:var(--white);
+  transition:.2s ease;
+}
+
+.hot-song:hover .hot-play{
+  background:linear-gradient(135deg,#4aa3ff,#2f6bff);
+  color:#fff;
+  transform:rotate(-4deg) scale(1.06);
+}
+
+
+/* ==============================
+   LOADING
+================================ */
+
+.loading{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:35px 0;
+  color:#888;
+  font-family:var(--Plus);
+  font-size:13px;
+}
+
+.loader{
+  width:18px;
+  height:18px;
+  border:2px solid #333;
+  border-top-color:var(--white);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+
+/* ==============================
+   EMPTY
+================================ */
+
+.empty{
+  padding:50px 20px;
+  text-align:center;
+  color:#666;
+  font-family:var(--Plus);
+}
+
+.empty i{
+  margin-bottom:10px;
+  font-size:30px;
+}
+
+.player-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(12px);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s ease;
+}
+
+.player-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.music-player{
+  position:relative;
+  width:min(900px,100%);
+  max-height:90vh;
+  overflow-y:auto;
+  padding:25px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;
+  background:#151515;
+  box-shadow:0 25px 80px rgba(0,0,0,.6);
+  transform:translateY(30px) scale(.96);
+  transition:.3s ease;
+}
+
+.player-overlay.active .music-player{
+  transform:translateY(0) scale(1);
+}
+
+.player-close{
+  position:absolute;
+  top:15px;
+  right:15px;
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  color:#fff;
+  background:#292929;
+  cursor:pointer;
+  font-size:17px;
+  transition:.2s ease;
+}
+
+.player-close:hover{
+  background:#3a3a3a;
+  transform:rotate(90deg);
+}
+
+.player-main{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.player-cover{
+  width:230px;
+  height:230px;
+  object-fit:cover;
+  border-radius:18px;
+  margin:10px 0 20px;
+  box-shadow:0 15px 40px rgba(0,0,0,.45);
+}
+
+.player-info{
+  width:100%;
+  text-align:center;
+}
+
+.player-label{
+  color:#888;
+  font-family:var(--Plus);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.player-info h2{
+  margin:7px 0 4px;
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:25px;
+  font-weight:900;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  letter-spacing: 0.3px;
+}
+
+.player-info p{
+  color:#999;
+  font-family:var(--Plus);
+  font-size:14px;
+}
+
+.player-progress{
+  width:100%;
+  display:grid;
+  grid-template-columns:40px 1fr 40px;
+  align-items:center;
+  gap:10px;
+  margin-top:25px;
+}
+
+.player-progress span{
+  color:#888;
+  font-family:var(--Plus);
+  font-size:11px;
+}
+
+.player-progress span:last-child{
+  text-align:right;
+}
+
+.player-progress input,
+.player-volume input{
+  width:100%;
+  cursor:pointer;
+}
+
+
+/* ==============================
+   RANGE SLIDERS (progress, volume)
+================================ */
+
+.player-progress input[type="range"],
+.player-volume input[type="range"],
+.mini-progress input[type="range"]{
+  --range-progress:0%;
+  -webkit-appearance:none;
+  appearance:none;
+  height:4px;
+  border-radius:999px;
+  background:linear-gradient(
+    to right,
+    #fff var(--range-progress),
+    #fff var(--range-progress),
+    #333 var(--range-progress),
+    #333 100%
+  );
+  outline:none;
+  transition:height .15s ease;
+}
+
+.player-progress input[type="range"]::-webkit-slider-thumb,
+.player-volume input[type="range"]::-webkit-slider-thumb,
+.mini-progress input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.45);
+  cursor:pointer;
+  transition:transform .15s ease;
+}
+
+.player-progress input[type="range"]::-moz-range-thumb,
+.player-volume input[type="range"]::-moz-range-thumb,
+.mini-progress input[type="range"]::-moz-range-thumb{
+  width:50px;
+  height:13px;
+  border:0;
+  border-radius:50%;
+  background:#00000000;
+  box-shadow:0 2px 8px rgba(0,0,0,.45);
+  cursor:pointer;
+  transition:transform .15s ease;
+}
+
+.player-progress input[type="range"]::-moz-range-track,
+.player-volume input[type="range"]::-moz-range-track,
+.mini-progress input[type="range"]::-moz-range-track{
+  height:4px;
+  width: 50px;
+  border-radius:999px;
+  background:#333;
+  border:0;
+}
+
+.player-progress input[type="range"]::-moz-range-progress,
+.player-volume input[type="range"]::-moz-range-progress,
+.mini-progress input[type="range"]::-moz-range-progress{
+  height:4px;
+  width: 50px;
+  border-radius:999px;
+  background:#fff;
+}
+
+.player-progress input[type="range"]:hover,
+.player-volume input[type="range"]:hover,
+.mini-progress input[type="range"]:hover{
+  height:6px;
+}
+
+.player-progress input[type="range"]:hover::-webkit-slider-thumb,
+.player-volume input[type="range"]:hover::-webkit-slider-thumb,
+.mini-progress input[type="range"]:hover::-webkit-slider-thumb{
+  transform:scale(1.2);
+}
+
+.player-progress input[type="range"]:hover::-moz-range-thumb,
+.player-volume input[type="range"]:hover::-moz-range-thumb,
+.mini-progress input[type="range"]:hover::-moz-range-thumb{
+  transform:scale(1.2);
+}
+
+.mini-progress input[type="range"]{
+  height:3px;
+}
+
+.mini-progress input[type="range"]::-webkit-slider-thumb{
+  width:10px;
+  height:10px;
+}
+
+.mini-progress input[type="range"]::-moz-range-thumb{
+  width:10px;
+  height:10px;
+}
+
+.player-controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:22px;
+  margin:20px 0;
+}
+
+.player-controls button{
+  width:45px;
+  height:45px;
+  border:0;
+  border-radius:50%;
+  color:#fff;
+  background:#292929;
+  cursor:pointer;
+  transition:.4s ease;
+}
+
+.player-controls button:active{
+  transform:scale(1.08);
+  background:#3a3a3a;
+}
+
+.player-controls .play-btn{
+  width:58px;
+  height:58px;
+  color:#111;
+  background:#fff;
+  font-size:18px;
+}
+
+.control-toggle-btn{
+  position:relative;
+  width:38px;
+  height:38px;
+  font-size:13px;
+  color:#777;
+  background:#242424;
+}
+
+.control-toggle-btn.active{
+  color:#111;
+  background:#fff;
+}
+
+.repeat-one-badge{
+  position:absolute;
+  bottom:2px;
+  right:2px;
+  display:none;
+  width:13px;
+  height:13px;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:8px;
+  font-weight:700;
+}
+
+.control-toggle-btn.mode-one .repeat-one-badge{
+  display:flex;
+}
+
+.control-toggle-btn.active .repeat-one-badge{
+  background:#fff;
+  color:#111;
+  border:1px solid #111;
+}
+
+.player-volume{
+  width: 250px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#999;
+}
+
+.player-volume input{
+  width:250px;
+}
+
+
+.player-recommend-list{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding:2px 2px 8px;
+  scrollbar-width:none;
+}
+
+.player-recommend-list::-webkit-scrollbar{
+  display:none;
+}
+
+.player-recommend-item{
+  flex:0 0 155px;
+  min-width:155px;
+  padding:8px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;
+  background:#1d1d1d;
+  cursor:pointer;
+  transition:.2s ease;
+  margin-top: 10px;
+}
+
+.player-recommend-item:hover{
+  transform:translateY(-3px);
+  background:#242424;
+}
+
+.player-recommend-item img{
+  width:100%;
+  height:139px;
+  display:block;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.player-recommend-item h4{
+  margin:9px 2px 3px;
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:13px;
+  line-height:1.3;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.player-recommend-item p{
+  margin:0 2px;
+  color:#888;
+  font-family:var(--Plus);
+  font-size:11px;
+  line-height:1.3;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.player-recommend-title h3{
+  margin-top: 15px;
+  margin-bottom: 3px;
+  font-size: 25px;
+  font-weight: 900;
+  color: #fff;
+  font-family:var(--Plus);
+}
+.player-recommend-title span{
+  font-weight: 300;
+  color: #888;
+  font-family:var(--Plus);
+  margin-bottom: 10px;
+}
+
+@media(max-width:600px){
+  .player-recommend-list{
+    gap:10px;
+  }
+
+  .player-recommend-item{
+    flex:0 0 135px;
+    min-width:135px;
+    padding:7px;
+  }
+
+  .player-recommend-item img{
+    height:121px;
+  }
+
+  .player-recommend-item h4{
+    font-size:12px;
+  }
+
+  .player-recommend-item p{
+    font-size:10px;
+  }
+}
+/* ==============================
+   RESPONSIVE
+================================ */
+
+@media (max-width:800px){
+  .song-card{
+    flex:0 0 190px;
+  }
+}
+
+@media (max-width:600px){
+  .main{
+    margin-top:20px;
+  }
+
+  .hero{
+    min-height:230px;
+    padding:25px;
+  }
+
+  .song-grid{
+    gap:12px;
+  }
+
+  .song-card{
+    flex:0 0 165px;
+  }
+
+  .song-list{
+    gap:10px;
+  }
+
+  .hot-song{
+    flex:0 0 290px;
+  }
+}
+
+@media (max-width:480px){
+  body{
+    padding:10px;
+  }
+
+  .navbar{
+    height:55px;
+    padding:6px 12px;
+    border-radius:17px;
+  }
+
+  .logo span{
+    margin-left:5px;
+    font-size:22px;
+  }
+
+  .avatar img{
+    width:40px;
+    height:40px;
+  }
+
+  .links{
+    display:none;
+  }
+
+  .avatar{
+    margin-left:auto;
+  }
+
+  .search-box{
+    height:54px;
+    border-radius:16px;
+  }
+
+  .search-box button{
+    height:42px;
+    padding:0 15px;
+  }
+
+  .hero{
+    min-height:210px;
+    margin-top:20px;
+    border-radius:20px;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .section{
+    margin-top:35px;
+  }
+
+  .section-title h2{
+    font-size:19px;
+  }
+
+  .song-card{
+    border-radius:14px;
+  }
+
+  .song-card-info{
+    padding:10px;
+  }
+
+  .hot-song{
+    gap:10px;
+  }
+
+  .hot-song img{
+    width:45px;
+    height:45px;
+  }
+
+  .player-controls{
+    gap:14px;
+  }
+
+  .control-toggle-btn{
+    width:34px;
+    height:34px;
+  }
+}
+/* MINI PLAYER + PLAYLIST */
+.mini-player{
+  position:fixed;
+  left:15px;
+  right:15px;
+  bottom:15px;
+  z-index:10000;
+  display:grid;
+  grid-template-columns:1.3fr auto 1.5fr auto;
+  align-items:center;
+  gap:20px;
+  padding:10px 14px;
+  border:1px solid #292929;
+  border-radius:18px;
+  background:rgba(20,20,20,.96);
+  box-shadow:0 15px 50px rgba(0,0,0,.55);
+  backdrop-filter:blur(15px);
+  transform:translateY(120%);
+  opacity:0;
+  pointer-events:none;
+  transition:.3s ease;
+}
+
+.mini-player.active{
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
+
+.mini-left{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-radius: 50%;
+}
+
+.mini-left img{
+  border-radius: 50%;
+  width:48px;
+  height:48px;
+  flex-shrink:0;
+  object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
+}
+.mini-info{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  cursor:pointer;
+}
+
+.mini-info strong{
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:22px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.mini-info span{
+  margin-top:3px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:11px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.mini-center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+.mini-center button,.mini-playlist-btn{
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  border:0;
+  border-radius:50%;
+  background:#292929;
+  color:#fff;
+  cursor:pointer;
+  transition:.4s ease;
+}
+
+.mini-center button:active,.mini-playlist-btn:hover{
+  background:#3a3a3a;
+  transform:scale(1.05);
+}
+
+.mini-center .mini-play{
+  width:43px;
+  height:43px;
+  background:#fff;
+  color:#111;
+}
+
+.mini-progress{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.mini-progress span{
+  color:#777;
+  font-family:var(--Plus);
+  font-size:10px;
+  white-space:nowrap;
+}
+
+.mini-progress input{
+  width:100%;
+  min-width:50px;
+  accent-color:#fff;
+  cursor:pointer;
+}
+
+.playlist-panel{
+  position:fixed;
+  right:15px;
+  bottom:90px;
+  z-index:10001;
+  width:360px;
+  max-width:calc(100% - 30px);
+  max-height:500px;
+  overflow:hidden;
+  border:1px solid #292929;
+  border-radius:18px;
+  background:#151515;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+  transform:translateY(20px) scale(.96);
+  opacity:0;
+  visibility:hidden;
+  transition:.25s ease;
+}
+
+.playlist-panel.active{
+  transform:translateY(0) scale(1);
+  opacity:1;
+  visibility:visible;
+}
+
+.playlist-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px;
+  border-bottom:1px solid #292929;
+}
+
+.playlist-header h3{
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:17px;
+}
+
+.playlist-header span{
+  display:block;
+  margin-top:3px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:11px;
+}
+
+.playlist-header button{
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:#292929;
+  color:#fff;
+  cursor:pointer;
+}
+
+.playlist-list{
+  max-height:420px;
+  overflow-y:auto;
+  padding:7px;
+  scrollbar-width:none;
+}
+
+.playlist-list::-webkit-scrollbar{
+  display:none;
+}
+
+.playlist-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:9px;
+  border-radius:11px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.playlist-item:hover,.playlist-item.active{
+  background:#292929;
+}
+
+.playlist-number{
+  width:20px;
+  flex-shrink:0;
+  color:#666;
+  font-family:var(--Plus);
+  font-size:11px;
+  text-align:center;
+}
+
+.playlist-item img{
+  width:42px;
+  height:42px;
+  flex-shrink:0;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.playlist-info{
+  min-width:0;
+  flex:1;
+}
+
+.playlist-info strong{
+  display:block;
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.playlist-info span{
+  display:block;
+  margin-top:3px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:10px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.playlist-status{
+  width:25px;
+  flex-shrink:0;
+  color:#777;
+  font-size:11px;
+  text-align:center;
+}
+
+.playlist-item.active .playlist-status{
+  color:#fff;
+}
+
+@media(max-width:600px){
+
+  .mini-player{
+    left:8px;
+    right:8px;
+    bottom:8px;
+    grid-template-columns:1fr auto auto;
+    gap:8px;
+    padding:8px;
+    border-radius:15px;
+  }
+
+  .mini-left img{
+    width:43px;
+    height:43px;
+  }
+
+  .mini-info strong{
+    font-size:11px;
+  }
+
+  .mini-info span{
+    font-size:9px;
+  }
+
+  .mini-center{
+    gap:5px;
+  }
+
+  .mini-center button{
+    width:32px;
+    height:32px;
+  }
+
+  .mini-center .mini-play{
+    width:38px;
+    height:38px;
+  }
+
+  .mini-progress{
+    position:absolute;
+    left:8px;
+    right:8px;
+    bottom:-3px;
+    gap:0;
+  }
+
+  .mini-progress span{
+    display:none;
+  }
+
+  .mini-progress input{
+    height:4px;
+  }
+
+  .mini-playlist-btn{
+    width:35px;
+    height:35px;
+  }
+
+  .playlist-panel{
+    left:8px;
+    right:8px;
+    bottom:78px;
+    width:auto;
+    max-width:none;
+    max-height:65vh;
+  }
+
+  .playlist-list{
+    max-height:calc(65vh - 75px);
+  }
+}
+
+
+/* ==============================
+   HAMBURGER NAVBAR
+================================ */
+
+.hamburger-btn{
+  display:none;
+  width:42px;
+  height:42px;
+  margin-left:auto;
+  border:1px solid #303030;
+  border-radius:12px;
+  background:#242424;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.hamburger-btn:hover{
+  background:#303030;
+}
+
+.mobile-menu{
+  position:fixed;
+  top:78px;
+  right:10px;
+  z-index:10002;
+  width:220px;
+  padding:8px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  background:#191919;
+  border:1px solid #292929;
+  border-radius:16px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-8px) scale(.97);
+  transition:.2s ease;
+}
+
+.mobile-menu.active{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0) scale(1);
+}
+
+.mobile-menu a,
+.mobile-menu button{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 12px;
+  border:0;
+  border-radius:10px;
+  background:transparent;
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:13px;
+  text-align:left;
+  text-decoration:none;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.mobile-menu a:hover,
+.mobile-menu button:hover{
+  background:#292929;
+}
+
+.mobile-menu button{
+  margin-top:4px;
+  border-top:1px solid #292929;
+  border-radius:0 0 10px 10px;
+  color:#fff;
+}
+
+.mobile-menu button i{
+  width:16px;
+  text-align:center;
+}
+
+.desktop-upload-btn{
+  height:40px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:0 16px;
+  border:0;
+  border-radius:4px 12px 4px 12px;
+  background:linear-gradient(135deg,#4aa3ff,#2f6bff);
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.desktop-upload-btn:hover{
+  filter:brightness(1.1);
+  transform:translateY(-2px);
+}
+
+/* ==============================
+   UPLOAD MODAL
+================================ */
+
+.upload-modal{
+  position:fixed;
+  inset:0;
+  z-index:10003;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(10px);
+  opacity:0;
+  visibility:hidden;
+  transition:.25s ease;
+}
+
+.upload-modal.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.upload-box{
+  position:relative;
+  width:min(450px,100%);
+  padding:25px;
+  border:1px solid #303030;
+  border-radius:22px;
+  background:#171717;
+  box-shadow:0 25px 80px rgba(0,0,0,.6);
+  transform:translateY(20px) scale(.97);
+  transition:.25s ease;
+}
+
+.upload-modal.active .upload-box{
+  transform:translateY(0) scale(1);
+}
+
+.upload-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#292929;
+  color:#fff;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.upload-close:hover{
+  background:#383838;
+  transform:rotate(90deg);
+}
+
+.upload-heading{
+  margin-bottom:22px;
+  padding-right:40px;
+}
+
+.upload-heading span{
+  color:#777;
+  font-family:var(--Accent);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.upload-heading h2{
+  margin-top:6px;
+  color:#fff;
+  font-family:var(--Pop);
+  font-size:25px;
+}
+
+.upload-heading p{
+  margin-top:5px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:12px;
+}
+
+.upload-field{
+  display:block;
+  margin-top:13px;
+}
+
+.upload-field span{
+  display:block;
+  margin-bottom:7px;
+  color:#aaa;
+  font-family:var(--Plus);
+  font-size:11px;
+  font-weight:600;
+}
+
+.upload-field input[type="text"],
+.upload-field input[type="file"]{
+  width:100%;
+  min-height:43px;
+  padding:10px 12px;
+  border:1px solid #303030;
+  border-radius:11px;
+  outline:none;
+  background:#101010;
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:12px;
+}
+
+.upload-field input[type="text"]:focus{
+  border-color:#555;
+}
+
+.upload-field input[type="file"]{
+  padding:8px;
+  color:#999;
+}
+
+.upload-field input[type="file"]::file-selector-button{
+  margin-right:8px;
+  padding:7px 10px;
+  border:0;
+  border-radius:7px;
+  background:#292929;
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:10px;
+  cursor:pointer;
+}
+
+.upload-submit{
+  width:100%;
+  height:47px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:20px;
+  border:0;
+  border-radius:12px;
+  background:#fff;
+  color:#111;
+  font-family:var(--Plus);
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.upload-submit:hover{
+  transform:translateY(-2px);
+}
+
+.upload-submit:active{
+  transform:scale(.98);
+}
+@media(max-width:700px){
+  .links{
+    display:none;
+  }
+
+  .desktop-upload-btn{
+    display:none;
+  }
+
+  .hamburger-btn{
+    display:block;
+  }
+
+  .avatar{
+    margin-left:0;
+  }
+}
+
+@media(min-width:701px){
+  .mobile-menu{
+    display:none;
+  }
+}
+
+@media(max-width:480px){
+  .navbar{
+    height:58px;
+    padding:7px 10px;
+  }
+
+  .logo span{
+    margin-left:5px;
+    font-size:22px;
+  }
+
+  .hamburger-btn{
+    width:40px;
+    height:40px;
+  }
+
+  .avatar img{
+    width:40px;
+    height:40px;
+  }
+
+  .mobile-menu{
+    top:74px;
+    right:8px;
+    left:8px;
+    width:auto;
+  }
+
+  .upload-box{
+    padding:21px 16px;
+    border-radius:19px;
+  }
+}
+
+/* ==============================
+   DELETE SAVED SONG BUTTON
+================================ */
+
+.song-card{
+  position:relative;
+}
+
+.song-card-add-btn,
+.song-card-delete-btn{
+  position:absolute;
+  top:8px;
+  z-index:2;
+  width:30px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:50%;
+  background:rgba(15,15,15,.75);
+  backdrop-filter:blur(4px);
+  color:#fff;
+  font-size:12px;
+  cursor:pointer;
+  opacity:0;
+  transform:translateY(-4px);
+  transition:.2s ease;
+}
+
+.song-card-add-btn{
+  right:44px;
+}
+
+.song-card-delete-btn{
+  right:8px;
+}
+
+.song-card:hover .song-card-add-btn,
+.song-card:hover .song-card-delete-btn{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.song-card-add-btn:hover{
+  background:#4aa3ff;
+}
+
+.song-card-delete-btn:hover{
+  background:#e5484d;
+}
+
+.playlist-item{
+  position:relative;
+}
+
+.playlist-delete-btn{
+  width:28px;
+  height:28px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-left:6px;
+  border:0;
+  border-radius:50%;
+  background:#242424;
+  color:#999;
+  font-size:11px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.playlist-delete-btn:hover{
+  background:#e5484d;
+  color:#fff;
+  transform:scale(1.05);
+}
+
+.hot-song-delete-btn{
+  width:30px;
+  height:30px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:50%;
+  background:#242424;
+  color:#999;
+  font-size:12px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.hot-song-delete-btn:hover{
+  background:#e5484d;
+  color:#fff;
+  transform:scale(1.05);
+}
+
+@media(max-width:600px){
+  .song-card-add-btn,
+  .song-card-delete-btn{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ==============================
+   TOAST NOTIFICATIONS
+================================ */
+
+.toast-container{
+  position:fixed;
+  top:18px;
+  left:50%;
+  z-index:10010;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  width:min(380px,calc(100% - 30px));
+  transform:translateX(-50%);
+  pointer-events:none;
+}
+
+.toast{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:13px 16px;
+  border:1px solid #292929;
+  border-radius:4px 14px 4px 14px;
+  background:#171717;
+  box-shadow:0 15px 40px rgba(0,0,0,.5);
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:13px;
+  opacity:0;
+  transform:translateY(-14px) scale(.97);
+  transition:.25s ease;
+  pointer-events:auto;
+  cursor:pointer;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+.toast i{
+  flex-shrink:0;
+  font-size:15px;
+}
+
+.toast span{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+
+.toast-success i{
+  color:#3ddc84;
+}
+
+.toast-error i{
+  color:#ff4d5e;
+}
+
+.toast-info i{
+  color:#007af4;
+}
+
+.toast-confirm{
+  flex-direction:column;
+  align-items:stretch;
+  gap:12px;
+  cursor:default;
+}
+
+.toast-confirm-message{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.toast-confirm-message i{
+  margin-top:1px;
+  color:#ffb020;
+}
+
+.toast-confirm-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+}
+
+.toast-btn{
+  padding:8px 16px;
+  border:0;
+  border-radius:4px 10px 4px 10px;
+  font-family:var(--Plus);
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.15s ease;
+}
+
+.toast-btn-cancel{
+  background:#292929;
+  color:#ccc;
+}
+
+.toast-btn-cancel:hover{
+  background:#3a3a3a;
+}
+
+.toast-btn-ok{
+  background:linear-gradient(135deg,#4aa3ff,#2f6bff);
+  color:#fff;
+}
+
+.toast-btn-ok:hover{
+  filter:brightness(1.1);
+  transform:translateY(-1px);
+}
+
+@media(max-width:480px){
+  .toast-container{
+    top:12px;
+    width:calc(100% - 20px);
+  }
+
+  .toast{
+    padding:11px 13px;
+    font-size:12.5px;
+  }
+}
+
+/* ==============================
+   PLAYLIST FEATURE
+================================ */
+
+/* -- nút thêm/xóa gộp nhóm trong hot-song & queue -- */
+
+.hot-song-actions,
+.playlist-item-actions{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-shrink:0;
+}
+
+.hot-song-add-btn{
+  width:30px;
+  height:30px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:50%;
+  background:#242424;
+  color:#999;
+  font-size:12px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.hot-song-add-btn:hover{
+  background:#4aa3ff;
+  color:#fff;
+  transform:scale(1.05);
+}
+
+.playlist-add-btn{
+  width:28px;
+  height:28px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:50%;
+  background:#242424;
+  color:#999;
+  font-size:11px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.playlist-add-btn:hover{
+  background:#4aa3ff;
+  color:#fff;
+  transform:scale(1.05);
+}
+
+
+/* -- section title action button -- */
+
+.section-title-action{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-left:auto;
+  padding:9px 16px;
+  border:1px solid #292929;
+  border-radius:4px 12px 4px 12px;
+  background:#151515;
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.section-title-action:hover{
+  background:linear-gradient(135deg,#4aa3ff,#2f6bff);
+  border-color:transparent;
+}
+
+.section-title-action i{
+  font-size:11px;
+}
+
+
+/* -- grid playlist của người dùng -- */
+
+.playlist-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:16px;
+}
+
+.playlist-empty-hint{
+  margin-top:4px;
+  color:#666;
+  font-family:var(--Plus);
+  font-size:13px;
+}
+
+.playlist-grid:not(:empty) + .playlist-empty-hint{
+  display:none;
+}
+
+.playlist-card{
+  position:relative;
+  padding:14px;
+  border:1px solid #222;
+  border-radius:4px 18px 4px 18px;
+  background:#151515;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.playlist-card:hover{
+  background:#1c1c1c;
+  border-color:#333;
+  transform:translateY(-3px);
+}
+
+.playlist-card-cover{
+  width:100%;
+  aspect-ratio:1/1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:4px 14px 4px 14px;
+  background:linear-gradient(135deg,#242424,#171717);
+  color:#444;
+  font-size:32px;
+}
+
+.playlist-card-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.playlist-card-info{
+  margin-top:12px;
+}
+
+.playlist-card-info h3{
+  color:var(--white);
+  font-family:var(--Plus);
+  font-size:14px;
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.playlist-card-info p{
+  margin-top:4px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:12px;
+}
+
+.playlist-card-delete-btn{
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:2;
+  width:28px;
+  height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:50%;
+  background:rgba(15,15,15,.8);
+  backdrop-filter:blur(4px);
+  color:#fff;
+  font-size:11px;
+  cursor:pointer;
+  opacity:0;
+  transition:.2s ease;
+}
+
+.playlist-card:hover .playlist-card-delete-btn{
+  opacity:1;
+}
+
+.playlist-card-delete-btn:hover{
+  background:#e5484d;
+}
+
+@media(max-width:600px){
+  .playlist-card-delete-btn{
+    opacity:1;
+  }
+}
+
+
+/* -- modal: thêm bài hát vào playlist -- */
+
+.add-to-playlist-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  max-height:260px;
+  margin-bottom:16px;
+  overflow-y:auto;
+  scrollbar-width:none;
+}
+
+.add-to-playlist-list::-webkit-scrollbar{
+  display:none;
+}
+
+.add-to-playlist-empty{
+  padding:10px 2px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:13px;
+  line-height:1.6;
+}
+
+.add-to-playlist-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  padding:11px 13px;
+  border:1px solid #292929;
+  border-radius:4px 12px 4px 12px;
+  background:#1a1a1a;
+  color:#ccc;
+  font-family:var(--Plus);
+  font-size:13px;
+  text-align:left;
+  cursor:pointer;
+  transition:.15s ease;
+}
+
+.add-to-playlist-row:hover{
+  border-color:#444;
+}
+
+.add-to-playlist-row i{
+  flex-shrink:0;
+  font-size:15px;
+  color:#555;
+}
+
+.add-to-playlist-row span{
+  flex:1;
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.add-to-playlist-row small{
+  flex-shrink:0;
+  color:#666;
+  font-size:11px;
+}
+
+.add-to-playlist-row.checked{
+  border-color:#2f6bff;
+  background:rgba(47,107,255,.08);
+  color:#fff;
+}
+
+.add-to-playlist-row.checked i{
+  color:#2f6bff;
+}
+
+
+/* -- panel: chi tiết 1 playlist (dùng chung style .playlist-panel) -- */
+
+.playlist-detail-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+#playlistDetailDelete:hover{
+  background:#e5484d;
+}
+
+#playlistDetailClose:hover{
+  background:#3a3a3a;
+}
+
+
+/* -- mượt hơn khi bấm link "Playlists" trên nav -- */
+
+html{
+  scroll-behavior:smooth;
+}
+
+/* Category*/
+.category-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:30px;
+}
+
+.title-category{
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.more{
+  margin-right: 10px;
+  font-size: 14px;
+  color: #4c4b4b;
+  cursor:pointer;
+}
+
+.category{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-top:16px;
+}
+
+.category > div{
+  position:relative;
+  min-height:110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 1px 30px 1px 30px;
+  cursor:pointer;
+  overflow:hidden;
+  transition:transform .3s linear;
+}
+
+.category > div:hover{
+  transform:translateY(-10px);
+}
+
+.category h4{
+  position:relative;
+  z-index:1;
+  color:#fff;
+  font-family:var(--Plus);
+  font-size:16px;
+  font-weight:700;
+  pointer-events:none;
+}
+
+/* ---- Ballad: đèn vàng nhập nhòe ---- */
+.ballad{
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,200,120,.55) 0%, transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(255,140,60,.4) 0%, transparent 55%),
+    linear-gradient(160deg, #2a1608, #0d0703);
+}
+.ballad::after{
+  content:"";
+  position:absolute; inset:0;
+  background:radial-gradient(circle at 30% 40%, rgba(255,210,140,.4), transparent 40%);
+  mix-blend-mode:screen;
+  animation:flicker 3.5s ease-in-out infinite;
+  pointer-events:none;
+}
+
+/* ---- R&B: hồng-tím mượt, sang trọng, tĩnh ---- */
+.randb{
+  background:
+    radial-gradient(circle at 25% 20%, rgba(255,120,220,.5) 0%, transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(140,60,255,.45) 0%, transparent 55%),
+    linear-gradient(160deg, #3a0d42, #12041a);
+}
+
+/* ---- Rock: đỏ-đen gắt, dữ dội, đứng yên ---- */
+.rock{
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,60,60,.6) 0%, transparent 40%),
+    radial-gradient(circle at 75% 70%, rgba(120,0,0,.5) 0%, transparent 55%),
+    linear-gradient(160deg, #250000, #050000);
+}
+.rock::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(160deg, rgba(255,255,255,.06), transparent 40%);
+  pointer-events:none;
+}
+
+/* ---- Rap: tím than, phát sáng ra ngoài như đèn neon ---- */
+.category > div.rap{
+  overflow:visible;
+  box-shadow:0 0 25px rgba(120,60,255,.25);
+}
+.rap{
+  background:
+    radial-gradient(circle at 30% 30%, rgba(120,60,255,.5) 0%, transparent 45%),
+    linear-gradient(160deg, #1a0d33, #06030d);
+}
+
+/* ---- EDM: neon xanh-hồng, nhịp nhanh, năng lượng cao ---- */
+.edm{
+  background:
+    radial-gradient(circle at 25% 30%, rgba(0,255,200,.55) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(255,0,200,.5) 0%, transparent 50%),
+    linear-gradient(160deg, #001a33, #000);
+}
+.edm::after{
+  content:"";
+  position:absolute; inset:0;
+  background:radial-gradient(circle at 60% 40%, rgba(0,255,255,.5), transparent 40%);
+  mix-blend-mode:screen;
+  animation:pulse 1.2s ease-in-out infinite;
+  pointer-events:none;
+}
+
+/* ---- Acoustic: be-nâu mộc mạc, gần như tĩnh, thở rất chậm ---- */
+.acoustic{
+  background:
+    radial-gradient(circle at 30% 30%, rgba(210,166,121,.4) 0%, transparent 50%),
+    linear-gradient(160deg, #3a2c1d, #15100a);
+}
+.acoustic::after{
+  content:"";
+  position:absolute; inset:0;
+  background:radial-gradient(circle at 40% 50%, rgba(230,190,140,.25), transparent 45%);
+  mix-blend-mode:screen;
+  animation:breathe 7s ease-in-out infinite;
+  pointer-events:none;
+}
+
+/* ---- Bolero: đỏ-vàng hoài cổ, như ánh nến ---- */
+.bolero{
+  background:
+    radial-gradient(circle at 25% 35%, rgba(255,190,90,.4) 0%, transparent 45%),
+    radial-gradient(circle at 75% 75%, rgba(140,20,20,.45) 0%, transparent 55%),
+    linear-gradient(160deg, #3d0f0f, #100303);
+}
+.bolero::after{
+  content:"";
+  position:absolute; inset:0;
+  background:radial-gradient(circle at 35% 40%, rgba(255,200,120,.35), transparent 40%);
+  mix-blend-mode:screen;
+  animation:flicker 4.5s ease-in-out infinite;
+  pointer-events:none;
+}
+
+/* ---- Pop: rực rỡ, ánh sáng lướt qua (shimmer) ---- */
+.pop{
+  background:
+    radial-gradient(circle at 25% 25%, rgba(255,90,160,.55) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(90,150,255,.5) 0%, transparent 55%),
+    linear-gradient(160deg, #2a0a2a, #050014);
+}
+.pop::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.25) 50%, transparent 70%);
+  background-size:250% 250%;
+  mix-blend-mode:screen;
+  animation:shimmer 5s ease-in-out infinite;
+  pointer-events:none;
+}
+
+/* ---- Animations dùng chung ---- */
+
+@keyframes flicker{
+  0%,100%{opacity:.5;}
+  45%{opacity:.9;}
+  50%{opacity:.35;}
+  70%{opacity:.8;}
+}
+@keyframes pulse{
+  0%,100%{opacity:.4; transform:scale(1);}
+  50%{opacity:1; transform:scale(1.05);}
+}
+@keyframes breathe{
+  0%,100%{opacity:.5;}
+  50%{opacity:.85;}
+}
+@keyframes shimmer{
+  0%{background-position:200% 0%;}
+  100%{background-position:-134% 0%;}
+}
+
+@media(max-width:600px){
+  .playlist-grid{
+    grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+    gap:12px;
+  }
+
+  .section-title-action{
+    padding:8px 13px;
+    font-size:11px;
+  }
+  .category{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+
+/* =====================================================================
+   POLISH LAYER
+   Giữ nguyên phong cách: nền tối, gradient cam–hồng, chữ Playfair,
+   góc bo lệch. Lớp này chỉ làm mọi thứ đồng nhất, mượt và rõ hơn.
+===================================================================== */
+
+:root{
+  --grad:linear-gradient(135deg,#4aa3ff,#2f6bff);
+  --surface:#151515;
+  --surface-2:#1b1b1b;
+  --line:rgba(255,255,255,.08);
+  --muted:#8d8d8d;
+  --ease:cubic-bezier(.22,.8,.3,1);
+}
+
+::selection{
+  background:rgba(47,107,255,.45);
+  color:#fff;
+}
+
+body{
+  background:
+    radial-gradient(900px 420px at 12% -120px, rgba(74,163,255,.12), transparent 70%),
+    radial-gradient(700px 380px at 92% -90px, rgba(47,107,255,.09), transparent 70%),
+    var(--bg);
+  background-repeat:no-repeat;
+  color:#eee;
+}
+
+/* ---------- Thanh điều hướng ---------- */
+
+.navbar{
+  background:rgba(18,18,18,.72);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  backdrop-filter:blur(16px) saturate(140%);
+  border-color:var(--line);
+  box-shadow:0 12px 34px rgba(0,0,0,.4);
+}
+
+.logo{
+  box-shadow:0 6px 22px rgba(47,107,255,.28);
+}
+
+.links{
+  border-left-color:rgba(255,255,255,.14);
+  border-right-color:rgba(255,255,255,.14);
+}
+
+.links .link{
+  color:#b5b5b5;
+}
+
+/* ---------- Tìm kiếm ---------- */
+
+.search-box{
+  background:var(--surface-2);
+  border-color:var(--line);
+  transition:border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+
+.search-box:focus-within{
+  border-color:rgba(74,163,255,.6);
+  box-shadow:0 0 0 4px rgba(74,163,255,.12);
+}
+
+.search-box input:focus-visible{
+  outline:none;
+}
+
+.search-box button{
+  background:var(--grad);
+  color:#fff;
+  box-shadow:0 6px 18px rgba(47,107,255,.25);
+  transition:transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.search-box button:hover{
+  box-shadow:0 10px 26px rgba(47,107,255,.4);
+}
+
+.suggestions{
+  background:rgba(22,22,22,.96);
+  border-color:var(--line);
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+  border-radius: 25px;
+}
+
+.suggestion-info span{
+  color:var(--muted);
+}
+
+/* ---------- Hero ---------- */
+
+.hero{
+  min-height:300px;
+  border:1px solid var(--line);
+  background-color:#0a0a0a;
+  background-image:
+    linear-gradient(to right,rgba(0,0,0,.7) 20%,transparent 60%),
+    url('./img/maxrez1.jpg'),
+    radial-gradient(circle at 88% 15%, rgba(47,107,255,.38), transparent 52%),
+    radial-gradient(circle at 55% 115%, rgba(74,163,255,.32), transparent 56%);
+  background-size:100% 100%,contain,100% 100%,100% 100%;
+  background-position:center,right,center,center;
+  background-repeat:no-repeat;
+  box-shadow:0 24px 60px rgba(0,0,0,.35);
+}
+
+.hero-label{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#9ccbff;
+}
+
+.hero-label::before{
+  content:"";
+  width:30px;
+  height:2px;
+  border-radius:2px;
+  background:var(--grad);
+}
+
+.hero h1{
+  letter-spacing:-.01em;
+  text-shadow:0 4px 30px rgba(0,0,0,.45);
+}
+
+.hero p{
+  color:#b8b8b8;
+  line-height:1.6;
+}
+
+/* ---------- Tiêu đề mục ---------- */
+
+.section{
+  margin-top:40px;
+}
+
+.section-title{
+  margin-bottom:22px;
+}
+.section-title h2,
+.title-category{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#fff;
+  font-family:var(--Pop);
+  font-size:25px;
+  letter-spacing:-.005em;
+}
+
+.section-title h2::before,
+.title-category::before{
+  content:"";
+  width:4px;
+  height:24px;
+  border-radius:2px 4px 2px 4px;
+  background:var(--grad);
+}
+
+.section-title > span{
+  padding:4px 11px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* ---------- Thể loại ---------- */
+
+.category-header{
+  margin-top:48px;
+}
+
+.title-category{
+  margin-left:0;
+}
+
+.more{
+  margin-right:0;
+  color:var(--muted);
+  transition:color .2s var(--ease);
+}
+
+.more:hover{
+  color:#4aa3ff;
+}
+
+.category{
+  gap:14px;
+}
+
+@media(min-width:760px){
+  .category{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+
+.category > div{
+  min-height:120px;
+  border:1px solid var(--line);
+  border-radius:4px 28px 4px 28px;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+
+.category > div:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.22);
+  box-shadow:0 18px 38px rgba(0,0,0,.45);
+}
+
+.category > div.rap:hover{
+  box-shadow:0 0 34px rgba(120,60,255,.42), 0 18px 38px rgba(0,0,0,.45);
+}
+
+.category h4{
+  font-family:var(--Pop);
+  font-size:21px;
+  font-weight:700;
+  letter-spacing:.02em;
+  text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
+
+/* ---------- Thẻ bài hát (Đề xuất) ---------- */
+
+.song-card{
+  background:linear-gradient(180deg,#1a1a1a,#141414);
+  border-color:var(--line);
+  border-radius:6px 20px 6px 20px;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+}
+
+.song-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(74,163,255,.38);
+  box-shadow:0 18px 40px rgba(0,0,0,.5);
+}
+
+.song-card img{
+  transition:transform .6s var(--ease);
+}
+
+.song-card:hover img{
+  transform:scale(1.05);
+}
+
+.song-card-info{
+  padding:14px 14px 16px;
+}
+
+.song-card-info h3{
+  font-size:14.5px;
+  font-weight:600;
+}
+
+.song-card-info p{
+  color:var(--muted);
+}
+
+/* ---------- Trending ---------- */
+
+.song-list{
+  border-top-color:var(--line);
+  border-bottom-color:var(--line);
+}
+
+.hot-song{
+  background:var(--surface);
+  border-color:var(--line);
+  transition:transform .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+}
+
+.hot-song:hover{
+  background:#1c1c1c;
+  box-shadow:0 12px 28px rgba(0,0,0,.4);
+}
+
+.hot-info p{
+  color:var(--muted);
+}
+
+/* ---------- Playlist của bạn ---------- */
+
+.playlist-card{
+  border-color:var(--line);
+  transition:transform .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+}
+
+.playlist-card:hover{
+  border-color:rgba(74,163,255,.3);
+  box-shadow:0 14px 32px rgba(0,0,0,.42);
+}
+
+.playlist-card-cover{
+  background:linear-gradient(135deg,#2a1a20,#171717);
+  color:rgba(74,163,255,.55);
+}
+
+.playlist-empty-hint{
+  padding:18px;
+  border:1px dashed rgba(255,255,255,.14);
+  border-radius:4px 16px 4px 16px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* ---------- Trình phát ---------- */
+
+.music-player{
+  background:linear-gradient(180deg,#1a1a1a,#121212);
+  border-color:var(--line);
+}
+
+.player-cover{
+  border-radius:6px 24px 6px 24px;
+  box-shadow:0 22px 50px rgba(0,0,0,.55), 0 0 70px rgba(47,107,255,.16);
+}
+
+.player-label{
+  color:#9ccbff;
+}
+
+.player-info h2{
+  margin-top: 15px;
+  font-family:var(--Pop);
+  font-weight:800;
+  letter-spacing:0;
+}
+
+.player-controls .play-btn,
+.mini-center .mini-play{
+  color:#fff;
+  background:var(--grad);
+  box-shadow:0 8px 24px rgba(47,107,255,.35);
+}
+
+.player-progress input[type="range"],
+.player-volume input[type="range"],
+.mini-progress input[type="range"]{
+  background:linear-gradient(
+    to right,
+    #4aa3ff,
+    #2f6bff var(--range-progress),
+    #333 var(--range-progress),
+    #333 100%
+  );
+}
+
+.player-progress input[type="range"]::-moz-range-progress,
+.player-volume input[type="range"]::-moz-range-progress,
+.mini-progress input[type="range"]::-moz-range-progress{
+  background:var(--grad);
+}
+
+.mini-player{
+  border-color:var(--line);
+  border-radius:6px 22px 6px 22px;
+  background:rgba(18,18,18,.88);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  backdrop-filter:blur(18px) saturate(140%);
+}
+
+/* ---------- Tiện dụng ---------- */
+
+/* Nút thêm/xóa trên thẻ chỉ hiện khi hover; trên điện thoại (không có hover) luôn hiện */
+@media (hover:none){
+  .song-card-add-btn,
+  .song-card-delete-btn{
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* Viền focus rõ ràng khi dùng bàn phím */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.song-card:focus-visible,
+.hot-song:focus-visible{
+  outline:2px solid #4aa3ff;
+  outline-offset:3px;
+}
+
+/* Thanh cuộn mảnh, hợp tông tối */
+.music-player,
+.playlist-list,
+.player-recommend-list,
+.add-to-playlist-list{
+  scrollbar-width:thin;
+  scrollbar-color:#3a3a3a transparent;
+}
+
+/* Người dùng tắt hiệu ứng chuyển động trong hệ thống thì tôn trọng */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+
+/* =====================================================================
+   LOGO + ANIMATION MƯỢT CHO POPUP / MINI-PLAYER
+===================================================================== */
+
+/* Ngôi sao logo: trắng sáng, nổi rõ trên nền gradient cam–hồng */
+.logo i{
+  background:none;
+  color:#fff;
+  -webkit-text-fill-color:#fff;
+  font-size:15px;
+  filter:drop-shadow(0 2px 6px rgba(20,50,120,.4));
+}
+
+/* Popup trình phát: nền mờ dần, hộp nhấc lên nhẹ nhàng */
+.player-overlay{
+  transition:opacity .35s ease, visibility .35s ease;
+}
+
+.music-player{
+  opacity:0;
+  transform:translateY(36px) scale(.95);
+  transition:transform .5s var(--ease), opacity .35s ease;
+  will-change:transform, opacity;
+}
+
+.player-overlay.active .music-player{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* Mini-player: trượt từ dưới lên, chờ popup mờ bớt rồi mới hiện để không bị chồng */
+.mini-player{
+  transform:translateY(130%) scale(.97);
+  opacity:0;
+  transition:transform .45s var(--ease), opacity .3s ease;
+  will-change:transform, opacity;
+}
+
+.mini-player.active{
+  transform:translateY(0) scale(1);
+  opacity:1;
+  transition:transform .6s var(--ease) .12s, opacity .4s ease .12s;
+}
+
+
+/* =====================================================================
+   TRENDING — thẻ to hơn, dễ nhìn hơn
+===================================================================== */
+
+.song-list{
+  gap:16px;
+  padding:18px 2px;
+}
+
+.hot-song{
+  flex:0 0 clamp(310px,36vw,430px);
+  gap:18px;
+  padding:16px 20px;
+  border-radius:6px 22px 6px 22px;
+}
+
+.hot-song::before{
+  width:4px;
+}
+
+.hot-song:hover::before{
+  width:6px;
+}
+
+.hot-number{
+  width:40px;
+  font-size:30px;
+}
+
+.hot-song img{
+  width:76px;
+  height:76px;
+  border-radius:6px 18px 6px 18px;
+  box-shadow:0 8px 20px rgba(0,0,0,.4);
+}
+
+.hot-info h3{
+  font-size:17px;
+}
+
+.hot-info p{
+  margin-top:5px;
+  font-size:13.5px;
+}
+
+.hot-song-delete-btn,
+.hot-song-add-btn{
+  width:36px;
+  height:36px;
+  font-size:14px;
+}
+
+@media(max-width:480px){
+  .hot-song{
+    flex:0 0 min(340px,88vw);
+    gap:10px;
+    padding:12px;
+  }
+
+  .hot-number{
+    width:22px;
+    font-size:22px;
+  }
+
+  .hot-song img{
+    width:58px;
+    height:58px;
+  }
+
+  .hot-info h3{
+    font-size:16px;
+  }
+
+  .hot-song-actions{
+    gap:4px;
+  }
+
+  .hot-song-delete-btn,
+  .hot-song-add-btn{
+    width:32px;
+    height:32px;
+  }
+}
+
+
+/* =====================================================================
+   GIAO DIỆN ĐIỆN THOẠI (<=700px): kiểu app nhạc, đen – xám – trắng
+===================================================================== */
+
+.hero-continue,
+.tabbar{ display:none; }
+
+  :root{ --grad:#fff; --muted:#8e8e93; --line:rgba(255,255,255,.1); }
+
+  ::selection{ background:rgba(255,255,255,.3); }
+  body{ padding:0; background:#000; }
+
+  .navbar,.hamburger-btn,.mobile-menu,.desktop-upload-btn{ display:none !important; }
+
+  .main{ display:flex; flex-direction:column; margin:0; padding:0 18px 210px; }
+
+  /* Hero toàn màn hình, ảnh bìa bài nghe gần nhất làm nền */
+  .hero{
+    order:-2; margin:20px 0 10px 0; min-height:64vh; padding:24px 20px 34px;
+    border:0; border-radius:0; box-shadow:none; background-color:#000;
+    background-image:
+      linear-gradient(to top,#000 6%,rgba(0,0,0,.25) 55%,rgba(0,0,0,.5)),
+      var(--hero-img,none);
+    background-size:contain; background-position:center top;
+  }
+  .hero-content{ display:none; }
+  .hero-continue{ display:block; position:relative; z-index:1; width:100%; }
+  .hero-kicker{ display:block; color:#d1d1d6; font-size:22px; font-weight:700; letter-spacing:.075em; }
+  .hero-continue h2{
+    margin:4px 0 18px; color:#fff; font-size:clamp(24px,6vw,35px);
+    font-weight:800; line-height:1.35; letter-spacing:-.045em;
+  }
+  .hero-play{
+    display:inline-flex; align-items:center; gap:10px; padding:10px 24px;
+    border:0; border-radius:999px; background:rgba(255,255,255,.3);
+    -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+    color:#fff; font:700 16px var(--Plus); letter-spacing:-.03em; cursor:pointer;
+  }
+
+  /* Tìm kiếm */
+  .search-section{ order:-1; max-width:none; margin:22px 0 0; }
+  .search-box{ height:52px; background:#1c1c1e; border-color:transparent; border-radius:999px; }
+  .search-box:focus-within{ border-color:rgba(255,255,255,.35); box-shadow:none; }
+  .search-box button{ background:#fff; color:#000; box-shadow:none; border-radius:999px; }
+
+  /* Tiêu đề mục */
+  .section{ margin-top:34px; }
+  .category-header{ margin-top:34px; }
+  .section-title h2,.title-category{
+    font-family:var(--Plus); font-weight:800; font-size:26px; letter-spacing:-.04em;
+  }
+  .section-title h2::before,.title-category::before,.hero-label::before{ display:none; }
+  .section-title > span{ display:none; }
+  .more{ color:#8e8e93; }
+
+  /* Thể loại: tông xám */
+  .category > div{ filter:grayscale(1) contrast(1.05); border-radius:22px; }
+
+  /* Thẻ bài hát: ảnh bo lớn, chữ nằm dưới, không khung */
+  .song-grid{ gap:16px; }
+  .song-card{
+    flex:0 0 172px; overflow:visible; background:none; border:0;
+    border-radius:0; box-shadow:none;
+  }
+  .song-card:hover{ transform:none; box-shadow:none; }
+  .song-card img{ border-radius:22px; }
+  .song-card:hover img{ transform:none; }
+  .song-card-info{ padding:10px 2px 0; }
+  .song-card-info h3{ color:#fff; font-size:16px; font-weight:700; letter-spacing:-.03em; }
+  .song-card-info p{ color:#8e8e93; font-size:14px; }
+  .song-card-add-btn:hover,.hot-song-add-btn:hover,.playlist-add-btn:hover{ background:#3a3a3c; }
+
+  /* Trending: danh sách dọc */
+  .song-list{ flex-direction:column; gap:0; overflow:visible; padding:0; border:0; margin-bottom:0; }
+  .hot-song{
+    flex:none; width:100%; padding:12px 0; background:transparent; border:0;
+    border-bottom:1px solid rgba(255,255,255,.08); border-radius:0; box-shadow:none;
+  }
+  .hot-song:hover{ background:transparent; box-shadow:none; transform:none; }
+  .hot-song::before{ display:none; }
+  .hot-song img{ box-shadow:none; border-radius:12px; }
+
+  /* Playlist */
+  .playlist-card{ background:#1c1c1e; border-color:transparent; border-radius:22px; }
+  .playlist-card:hover{ border-color:transparent; }
+  .playlist-card-cover{ border-radius:16px; background:#2c2c2e; color:#8e8e93; }
+  .playlist-empty-hint{ border-color:rgba(255,255,255,.14); }
+  .section-title-action{ background:#1c1c1e; border-color:transparent; border-radius:999px; }
+  .section-title-action:hover{ background:#2c2c2e; }
+  .upload-submit{ background:#fff; color:#000; }
+
+  /* Popup trình phát: bỏ màu cam–hồng */
+  .player-cover{ box-shadow:0 20px 50px rgba(0,0,0,.6); }
+  .player-label{ color:#8e8e93; }
+  .player-info h2{ font-family:var(--Plus); letter-spacing:-.04em; }
+  .player-controls .play-btn{ background:#fff; color:#000; box-shadow:none; }
+  .player-progress input[type="range"],
+  .player-volume input[type="range"],
+  .mini-progress input[type="range"]{
+    background:linear-gradient(to right,#fff var(--range-progress),#333 var(--range-progress),#333 100%);
+  }
+  .player-progress input[type="range"]::-moz-range-progress,
+  .player-volume input[type="range"]::-moz-range-progress,
+  .mini-progress input[type="range"]::-moz-range-progress{ background:#fff; }
+  a:focus-visible,button:focus-visible,input:focus-visible{ outline-color:#fff; }
+
+  /* Mini-player: viên thuốc nổi, chỉ còn Play + Next */
+  .mini-player{
+    left:14px; right:14px; bottom:calc(94px + env(safe-area-inset-bottom,0px));
+    grid-template-columns:1fr auto; gap:10px; padding:8px 12px 8px 8px;
+    border:0; border-radius:30px; background:rgba(44,44,46,.82);
+  }
+  .mini-progress,#miniPrev,.mini-playlist-btn{ display:none; }
+  .mini-left img{ width:50px; height:50px; border-radius:50%; }
+  .mini-center{ gap:2px; }
+  .mini-center button,.mini-center .mini-play{
+    width:44px; height:44px; background:transparent; color:#fff; box-shadow:none; font-size:22px;
+  }
+
+  /* Thanh tab nổi ở đáy */
+  .tabbar{
+    display:flex; position:fixed; left:14px; right:14px;
+    bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:9998;
+    height:68px; padding:6px; gap:4px; border-radius:34px;
+    background:rgba(44,44,46,.82);
+    -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
+  }
+  .tabbar button{
+    flex:1; border:0; border-radius:28px; background:transparent; color:#8e8e93;
+    font-size:22px; cursor:pointer;
+    transition:background .3s var(--ease), color .3s var(--ease);
+  }
+  .tabbar button.active{ background:rgba(255,255,255,.14); color:#fff; }
+
+
+/* =====================================================================
+   GỢI Ý TRONG POPUP: ảnh luôn vuông (trước đây ép cao cố định nên bị lệch)
+===================================================================== */
+
+.player-recommend-item img{
+  height:auto;
+  aspect-ratio:1/1;
+}
+
+@media(max-width:700px){
+  .player-recommend-list{ gap:14px; }
+
+  .player-recommend-item{
+    flex:0 0 140px;
+    min-width:140px;
+    padding:0;
+    border:0;
+    background:none;
+  }
+
+  .player-recommend-item:hover{ transform:none; background:none; }
+  .player-recommend-item img{ border-radius:18px; }
+
+  .player-recommend-item h4{
+    margin:10px 2px 2px;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:-.02em;
+  }
+
+  .player-recommend-item p{ font-size:12px; color:#8e8e93; }
+}
+
+
+/* Tên bài trên thẻ "Đề xuất": hiện tối đa 2 dòng rồi mới "..." */
+.song-card-info h3{
+  white-space:normal;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  line-height:1.3;
+}
+
+
+/* Search results are displayed immediately below the search field. */
+.search-results-inline{
+  width:100%;
+  max-width:none;
+  margin:16px 0 0;
+  padding:0;
+}
+
+.search-results-inline .section-title{
+  margin-bottom:12px;
+}
+
+.search-results-inline .section-title h2{
+  font-size:20px;
+}
+
+.search-results-inline .song-grid{
+  margin-top:0;
+}
+
+/* ==============================
+   ONLINE SEARCH + BETTER LYRICS
+================================ */
+
+.online-search-note{
+  margin:-8px 0 14px;
+  color:#858585;
+  font-family:var(--Plus);
+  font-size:12px;
+  line-height:1.6;
+}
+
+.online-song-card{
+  position:relative;
+}
+
+.online-song-card::after{
+  content:"NAVIDROME • STREAM";
+  position:absolute;
+  top:10px;
+  left:10px;
+  padding:5px 8px;
+  border:1px solid #ffffff24;
+  border-radius:7px;
+  background:#090909d9;
+  color:#fff;
+  font-family:var(--Accent);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.lyrics-panel{
+  width:100%;
+  margin:28px 0 24px;
+  padding:20px;
+  border:1px solid #292929;
+  border-radius:20px;
+  background:linear-gradient(145deg,#1a1a1a,#111);
+}
+
+.lyrics-heading{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.lyrics-kicker{
+  color:#ff8b67;
+  font-family:var(--Accent);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.lyrics-heading h3{
+  margin-top:5px;
+  color:#fff;
+  font-family:var(--Pop);
+  font-size:22px;
+}
+
+.lyrics-heading button{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border:1px solid #333;
+  border-radius:12px;
+  background:#242424;
+  color:#ddd;
+  cursor:pointer;
+}
+
+.lyrics-heading button:active{
+  transform:scale(.94);
+}
+
+.lyrics-status{
+  margin:10px 0 14px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:11px;
+}
+
+.lyrics-content{
+  max-height:340px;
+  min-height:150px;
+  overflow-y:auto;
+  padding:8px 2px;
+  scrollbar-width:thin;
+  scrollbar-color:#444 transparent;
+  scroll-behavior:smooth;
+  text-align:center;
+}
+
+.lyrics-line{
+  width:100%;
+  display:block;
+  padding:8px 5px;
+  border:0;
+  background:transparent;
+  color:#666;
+  font-family:var(--Plus);
+  font-size:16px;
+  font-weight:600;
+  line-height:1.8;
+  text-align:center;
+  cursor:pointer;
+  transition:color .2s ease,transform .2s ease;
+}
+
+.lyrics-line.active{
+  color:#fff;
+  transform:scale(1.025);
+}
+
+.lyrics-line.past{
+  color:#777;
+}
+
+.lyrics-word{
+  display:inline;
+  transition:color .12s ease,text-shadow .12s ease;
+}
+
+.lyrics-word.word-active{
+  color:#ff9a76;
+  text-shadow:0 0 18px #4aa3ff45;
+}
+
+.lyrics-placeholder{
+  max-width:420px;
+  margin:35px auto;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:13px;
+  line-height:1.8;
+  text-align:center;
+}
+
+.lyrics-credit{
+  display:inline-block;
+  margin-top:12px;
+  color:#777;
+  font-family:var(--Plus);
+  font-size:10px;
+  text-decoration:none;
+}
+
+.lyrics-credit:hover{
+  color:#ff9a76;
+}
+
+@media(max-width:600px){
+  .lyrics-panel{
+    margin:22px 0;
+    padding:16px 13px;
+    border-radius:16px;
+  }
+
+  .lyrics-line{
+    font-size:14px;
+    padding:7px 3px;
+  }
+
+  .lyrics-content{
+    max-height:300px;
+  }
+
+  .online-search-note{
+    font-size:11px;
+  }
+}
+
+
+/* Source and license attribution for free online tracks. */
+.online-source-link{
+  display:block;
+  position:relative;
+  z-index:2;
+  margin:8px 10px 2px;
+  color:#a9b9c9;
+  font-size:10px;
+  line-height:1.4;
+  text-decoration:none;
+  overflow-wrap:anywhere;
+}
+.online-source-link:hover{color:#fff07c;text-decoration:underline;}
+
+.navidrome-settings{
+  margin:12px 0 0;
+  border:1px solid #ffffff18;
+  border-radius:14px;
+  background:#11131a;
+  color:#f4f4f5;
+  overflow:hidden;
+}
+.navidrome-settings summary{
+  display:flex;align-items:center;gap:9px;padding:12px 14px;cursor:pointer;
+  list-style:none;font-size:13px;font-weight:600;
+}
+.navidrome-settings summary::-webkit-details-marker{display:none}
+.navidrome-settings summary i{color:#fff07c;font-size:17px}
+.navidrome-settings summary span{margin-left:auto;color:#a1a1aa;font-size:11px;font-weight:500}
+.navidrome-settings-body{display:grid;gap:9px;padding:0 14px 14px}
+.navidrome-settings-body label{font-size:12px;color:#c4c4cc}
+.navidrome-settings-body input{width:100%;padding:12px;border:1px solid #ffffff20;border-radius:10px;background:#090a0f;color:#fff;outline:none}
+.navidrome-settings-actions{display:flex;gap:8px}
+.navidrome-settings-actions button{padding:10px 14px;border:0;border-radius:9px;background:#28587b;color:#fff;font-weight:700}
+.navidrome-settings-actions .nd-clear{background:#292a32;color:#ddd}
+.navidrome-settings-body small{color:#888;font-size:10px;line-height:1.6}
+.online-song-card::after{content:"NAVIDROME • STREAM";font-size:8px}
+
+
+.youtube-player-frame{
+  width:100%;
+  aspect-ratio:16/9;
+  background:#000;
+  border-radius:14px;
+  overflow:hidden
+}
+
+.youtube-player-frame iframe{
+  width:100%;
+  height:100%;
+  border:0; 
+  opacity: 0; 
+  pointer-events: none;
+}
+
+
+/* =====================================================================
+   DESKTOP: dùng chung phong cách app như điện thoại
+===================================================================== */
+
+.main{ max-width:1100px; margin:0 auto; }
+.hero{ border-radius:0 0 28px 28px; }
+.tabbar,
+.mini-player{ max-width:520px; margin-left:auto; margin-right:auto; }
+
+@media(min-width:900px){
+  .hero{ min-height:60vh; padding:40px 48px 48px; }
+  .hero-continue h2{ font-size:56px; }
+  .song-card{ flex-basis:200px; }
+  .song-list{ display:grid; grid-template-columns:1fr 1fr; column-gap:32px; }
+}
+
+
+/* =====================================================================
+   CÁC TRANG + HỒ SƠ
+===================================================================== */
+
+.page-off{ display:none !important; }
+
+.profile-head{ display:flex; align-items:center; gap:16px; margin:8px 0 26px; }
+.profile-avatar{
+  width:76px; height:76px; border-radius:50%; display:grid; place-items:center;
+  background:#2c2c2e; color:#fff; font-size:30px;
+}
+.profile-head h2{ font:800 28px var(--Plus); letter-spacing:-.04em; }
+.profile-head p{ margin-top:4px; color:#8e8e93; font-size:14px; }
+
+.profile .upload-box{
+  position:static; transform:none; width:100%; max-width:none; max-height:none;
+  margin:0 0 34px; box-shadow:none; background:#1c1c1e; border:0; border-radius:24px;
+}
+.profile .upload-close{ display:none; }
+
+.lib-row{ display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,.08); }
+.lib-row img{ width:56px; height:56px; border-radius:12px; object-fit:cover; flex:none; }
+.lib-info{ flex:1; min-width:0; }
+.lib-info h3{ font-size:16px; font-weight:700; letter-spacing:-.03em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.lib-info p{ color:#8e8e93; font-size:14px; }
+.lib-row button{ flex:none; width:40px; height:40px; border:0; border-radius:50%; background:#2c2c2e; color:#fff; cursor:pointer; }
+.lib-row button:hover{ background:#3a3a3c; }
+
+
+/* =====================================================================
+   KẾT QUẢ TÌM KIẾM XẾP DỌC + GỢI Ý KHI GÕ
+===================================================================== */
+
+.search-box{ position:relative; }
+.suggestions.open{ display:block; }
+.suggestion-item i{ width:40px; text-align:center; color:#8e8e93; }
+.suggestion-item:hover{ background:#2c2c2e; }
+.suggestion-info span{ color:#8e8e93; }
+
+#searchResults{ display:flex; flex-direction:column; gap:0; overflow:visible; padding:0; }
+
+.online-song-card{
+  flex:none; width:100%; display:flex; align-items:center; gap:14px;
+  padding:12px 0; border-bottom:1px solid rgba(255,255,255,.08);
+}
+.online-song-card::after{ display:none; }   /* bỏ nhãn "NAVIDROME • STREAM" */
+.online-song-card img{ width:128px; height:auto; aspect-ratio:16/9; flex:none; border-radius:12px; object-fit:cover; }
+.online-song-card .song-card-info{ flex:1; min-width:0; padding:0; }
+.online-song-card .song-card-add-btn{
+  position:static; flex:none; width:40px; height:40px; opacity:1; transform:none;
+}
+.online-song-card .song-card-delete-btn{ display:none; }
+
+@media(min-width:900px){
+  #searchResults{ display:grid; grid-template-columns:1fr 1fr; column-gap:32px; }
+}
+
+
+/* Thể loại nằm ở trang Tìm kiếm; tìm xong thì ẩn, chỉ còn kết quả */
+.is-searching .category-header,
+.is-searching .category{ display:none !important; }
+#searchResultSection[hidden]{ display:none !important; }
+.category-header{ margin-top:30px; }
+
+
+/* =====================================================================
+   LỊCH SỬ NGHE · THỐNG KÊ · HẸN GIỜ NGỦ
+===================================================================== */
+
+#historySection[data-empty]{ display:none; }
+.hist-card .song-card-info p{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+.listen-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:18px; }
+.listen-stats > div{ padding:14px 12px; border-radius:20px; background:#1c1c1e; }
+.listen-stats strong{ display:block; color:#fff; font-size:17px; font-weight:800; letter-spacing:-.03em; }
+.listen-stats span{ display:block; margin-top:4px; color:#8e8e93; font-size:12px; }
+
+.profile-card{ margin-bottom:26px; padding:18px; border-radius:24px; background:#1c1c1e; }
+.profile-card-title{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:14px; color:#fff; font-weight:700; letter-spacing:-.02em; }
+.profile-card-title em{ color:#8e8e93; font-size:13px; font-style:normal; font-weight:500; }
+
+.sleep-options{ display:flex; flex-wrap:wrap; gap:8px; }
+.sleep-options button{
+  padding:10px 16px; border:0; border-radius:999px; background:#2c2c2e; color:#fff;
+  font:600 14px var(--Plus); cursor:pointer; transition:background .2s var(--ease), color .2s var(--ease);
+}
+.sleep-options button:hover{ background:#3a3a3c; }
+.sleep-options button.active{ background:#fff; color:#000; }
+
+
+/* =====================================================================
+   THANH TRÊN CÙNG: logo + tên trang hiện dần khi cuộn
+===================================================================== */
+
+.topbar{
+  position:fixed; top:0; left:0; right:0; z-index:9997;
+  display:flex; align-items:center; gap:12px;
+  height:calc(60px + env(safe-area-inset-top,0px));
+  padding:env(safe-area-inset-top,0px) 18px 0 max(18px, calc((100vw - 1100px) / 2 + 18px));
+  background:transparent;
+  pointer-events:none;
+  transition:background .3s var(--ease), backdrop-filter .3s var(--ease);
+}
+
+.topbar > *{ pointer-events:auto; }
+
+.topbar.scrolled{
+  background:rgba(0,0,0,.6);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  backdrop-filter:blur(18px) saturate(140%);
+}
+
+.topbar-logo{
+  display:grid; place-items:center; width:34px; height:34px;
+  padding:0; border:0; background:none; cursor:pointer;
+}
+
+.topbar-logo img{
+  width:30px; height:30px; object-fit:contain;
+  filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));
+}
+
+.topbar-title{
+  color:#fff; font:800 30px var(--Plus); letter-spacing:-.04em;
+  opacity:0; will-change:opacity,transform;
+  transition:opacity .2s ease, transform .2s ease;
+}
+
+/* Trang không có hero: chừa chỗ cho thanh trên cùng */
+body:not([data-page="home"]) .main{ padding-top:56px; }
+
+
+/* =====================================================================
+   THANH TRÊN CÙNG v2: logo to biến mất khi cuộn, blur lan xuống nội dung
+===================================================================== */
+
+.topbar{
+  --bar-left:max(18px, calc((100vw - 1100px) / 2 + 18px));
+  height:calc(72px + env(safe-area-inset-top,0px));
+  padding-left:var(--bar-left);
+}
+
+/* Bỏ nền khối cũ, thay bằng lớp blur mờ dần lan xuống */
+.topbar.scrolled{
+  background:transparent;
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+}
+
+.topbar::before{
+  content:"";
+  position:absolute;
+  inset:0 0 -56px 0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(to bottom, rgba(0,0,0,.8), rgba(0,0,0,0));
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+  -webkit-mask-image:linear-gradient(to bottom, #000 50%, transparent);
+  mask-image:linear-gradient(to bottom, #000 50%, transparent);
+  opacity:var(--blur-o,0);
+}
+
+.topbar-logo{
+  width:56px;
+  height:56px;
+  transform-origin:left center;
+  will-change:opacity,transform;
+}
+
+.topbar-logo img{ width:48px; height:48px; }
+
+/* Chữ tên trang nằm đúng chỗ logo, thế chỗ khi logo biến mất */
+.topbar-title{
+  position:absolute;
+  left:var(--bar-left);
+  top:env(safe-area-inset-top,0px);
+  height:72px;
+  display:flex;
+  align-items:center;
+}
+
+body:not([data-page="home"]) .main{ padding-top:64px; }
+
+
+/* =====================================================================
+   AVATAR TRÒN (thanh trên cùng + trang Hồ sơ) VÀ Ô ĐỔI TÊN
+===================================================================== */
+
+.topbar{ padding-right:var(--bar-left); }
+
+.topbar-avatar{
+  margin-left:auto;
+  display:grid; place-items:center;
+  width:48px; height:48px; padding:0;
+  border:1px solid rgba(255,255,255,.16); border-radius:50%;
+  background:#2c2c2e; color:#fff; font-size:18px;
+  overflow:hidden; cursor:pointer;
+  box-shadow:0 2px 10px rgba(0,0,0,.4);
+  transform-origin:right center;
+  will-change:opacity,transform;
+}
+
+.profile-avatar{
+  position:relative; flex:none; padding:0; border:0; cursor:pointer;
+  color:#fff; font-size:30px;
+}
+
+.profile-avatar img,
+.topbar-avatar img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
+
+/* Font Awesome ép display nên thuộc tính hidden không đủ */
+.profile-avatar > i[hidden],
+.topbar-avatar > i[hidden]{ display:none !important; }
+
+.avatar-badge{
+  position:absolute; right:-2px; bottom:-2px;
+  display:grid; place-items:center; width:26px; height:26px;
+  border:3px solid #000; border-radius:50%;
+  background:#fff; color:#000; font-size:11px;
+}
+
+.profile-head > div{ flex:1; min-width:0; }
+
+.profile-name{
+  width:100%; padding:2px 0;
+  border:0; 
+  background:transparent; outline:none;
+  color:#fff; font:800 28px var(--Plus); letter-spacing:-.04em;
+}
+.profile-name::placeholder{ color:#636366; }
+.profile-name:focus{ border-bottom-color:#fff; }
+
+
+/* Ô tên ở trang Hồ sơ: bỏ khung viền trắng bo tròn khi bấm vào (chỉ giữ gạch chân) */
+.profile-name:focus,
+.profile-name:focus-visible{
+  outline:none;
+  box-shadow:none;
+}
+
+
+/* =====================================================================
+   LIQUID GLASS
+   Kính mờ trong suốt: blur + tăng độ rực, viền sáng ở mép, vệt phản chiếu ở trên.
+   Nền phía sau là ảnh bìa bài đang nghe (làm nhòe) để kính có màu để "bắt".
+===================================================================== */
+
+:root{
+  --glass-sheen:linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 46%);
+  --glass-fill:linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
+  --glass-line:rgba(255,255,255,.2);
+  --glass-shadow:
+    0 14px 34px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.4),
+    inset 0 -1px 0 rgba(255,255,255,.07),
+    inset 0 0 24px rgba(255,255,255,.05);
+}
+
+/* Nền: ảnh bìa nhòe + lớp tối phủ dần xuống dưới */
+body::before{
+  content:""; position:fixed; inset:-60px; z-index:-1; pointer-events:none;
+  background-image:var(--hero-img,none); background-size:cover; background-position:center;
+  filter:blur(60px) saturate(1.5); opacity:.55; transform:translateZ(0);
+}
+body::after{
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:linear-gradient(to bottom, rgba(0,0,0,.3), #000 88%);
+}
+
+/* Các mặt kính */
+.tabbar,
+.mini-player,
+.listen-stats > div,
+.profile-card,
+.upload-box,
+.profile .upload-box,
+.playlist-card,
+.search-box,
+.suggestions,
+.section-title-action,
+.hero-play,
+.topbar-avatar,
+.music-player{
+  background:var(--glass-sheen), var(--glass-fill);
+  border:1px solid var(--glass-line);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  backdrop-filter:blur(22px) saturate(180%);
+  box-shadow:var(--glass-shadow);
+}
+
+/* Thanh tab: viên chọn kiểu giọt kính */
+.tabbar button{ color:rgba(255,255,255,.7); }
+.tabbar button.active{
+  color:#fff;
+  background:linear-gradient(135deg, rgba(255,255,255,.3), rgba(255,255,255,.1));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(255,255,255,.1), 0 6px 16px rgba(0,0,0,.25);
+}
+
+.search-box:focus-within{ border-color:rgba(255,255,255,.5); box-shadow:var(--glass-shadow), 0 0 0 4px rgba(255,255,255,.08); }
+
+/* Popup trình phát: tấm kính lớn, thấy trang chủ mờ phía sau */
+.player-overlay{
+  background:rgba(0,0,0,.35);
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+}
+.music-player{ background:var(--glass-sheen), rgba(28,28,30,.55); }
+
+.sleep-options button,
+.lib-row button{
+  background:linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.05));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3);
+}
+.sleep-options button.active{ background:#fff; color:#000; }
+
+/* Máy không hỗ trợ blur nền: dùng nền đặc để vẫn đọc được */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .tabbar,.mini-player,.listen-stats > div,.profile-card,.upload-box,.playlist-card,
+  .search-box,.suggestions,.section-title-action,.topbar-avatar,.music-player{ background:#1c1c1e; }
+}
+
+/* Người dùng bật "giảm độ trong suốt" trong hệ thống */
+@media (prefers-reduced-transparency:reduce){
+  body::before{ display:none; }
+  .tabbar,.mini-player,.listen-stats > div,.profile-card,.upload-box,.playlist-card,
+  .search-box,.suggestions,.section-title-action,.hero-play,.topbar-avatar,.music-player{
+    background:#1c1c1e; -webkit-backdrop-filter:none; backdrop-filter:none;
+  }
+}
+
+
+/* =====================================================================
+   HERO TRÀN + NHÒE HÒA VÀO NỀN · KÍNH TRONG HƠN
+===================================================================== */
+
+/* Hero tràn kín chiều ngang, bắt đầu từ mép trên màn hình */
+.main > .hero{
+  margin:0 -18px 10px;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background:none;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+
+/* Lớp 1: ảnh bìa phóng to + nhòe, tan dần xuống nền trang */
+.main > .hero::before{
+  content:"";
+  position:absolute; inset:-48px; z-index:-2;
+  background-image:var(--hero-img,none);
+  background-size:cover; background-position:center;
+  filter:blur(38px) saturate(1.45) brightness(.82);
+  -webkit-mask-image:linear-gradient(to bottom, #000000 60%, transparent);
+  mask-image:linear-gradient(to bottom, #000 60%, transparent);
+}
+
+/* Lớp 2: ảnh nét ở trên cùng, mờ dần xuống để hòa vào lớp nhòe */
+.main > .hero::after{
+  content:"";
+  position:absolute; left:0; right:0; top:var(--hero-img-offset, 80px); z-index:-1;
+  aspect-ratio:16/9;
+  background-image:var(--hero-img,none);
+  background-size:cover; background-position:center;
+  -webkit-mask-image:linear-gradient(to bottom, #000 45%, transparent);
+  mask-image:linear-gradient(to bottom, #000 45%, transparent);
+}
+
+.hero-continue h2{ text-shadow:0 2px 24px rgba(0,0,0,.55); }
+
+/* Kính trong hơn: ít nhám (blur nhẹ), ít đục, viền sáng rõ ở mép */
+:root{
+  --glass-sheen:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 38%);
+  --glass-fill:linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.015));
+  --glass-line:rgba(255,255,255,.26);
+  --glass-shadow:
+    0 8px 26px rgba(0,0,0,.28),
+    inset 0 1px 1px rgba(255,255,255,.6),
+    inset 0 -1px 1px rgba(255,255,255,.2),
+    inset 1px 0 0 rgba(255,255,255,.12),
+    inset -1px 0 0 rgba(255,255,255,.12);
+}
+
+.tabbar,
+.mini-player,
+.listen-stats > div,
+.profile-card,
+.upload-box,
+.profile .upload-box,
+.playlist-card,
+.search-box,
+.suggestions,
+.section-title-action,
+.hero-play,
+.topbar-avatar,
+.music-player{
+  -webkit-backdrop-filter:blur(9px) saturate(170%) brightness(1.08);
+  backdrop-filter:blur(9px) saturate(170%) brightness(1.08);
+}
+
+.music-player{ background:var(--glass-sheen), rgba(28,28,30,.32); }
+
+.tabbar button.active{
+  background:linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+}
+
+
+/* =====================================================================
+   SỬA LỆCH: HERO TRÀN ĐỦ NGANG · GỢI Ý TÌM KIẾM NẰM TRÊN CÙNG, ĐỌC ĐƯỢC
+===================================================================== */
+
+/* Hero: bù đúng phần margin âm để trải kín chiều ngang (trước đây width:100% làm nó dịch sang trái, hở dải đen bên phải) */
+.main > .hero{
+  width:calc(100% + 36px);
+  max-width:none;
+  align-self:flex-start;
+}
+
+/* Ô tìm kiếm và danh sách gợi ý phải nằm trên các ô thể loại */
+.search-section,
+.search-box{ position:relative; z-index:30; }
+
+.suggestions{
+  z-index:40;
+  background:rgba(22,22,24,.9);
+  -webkit-backdrop-filter:blur(26px) saturate(160%);
+  backdrop-filter:blur(26px) saturate(160%);
+}
+
+
+/* =====================================================================
+   HERO: lớp phủ đen ở đỉnh, blur lan dần xuống dưới
+===================================================================== */
+
+.hero-scrim{
+  position:absolute;
+  inset:0 0 auto 0;
+  height:230px;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(to bottom, rgba(0,0,0,.92) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,0) 100%);
+  -webkit-backdrop-filter:blur(20px);
+  backdrop-filter:blur(20px);
+  -webkit-mask-image:linear-gradient(to bottom, #000 35%, transparent);
+  mask-image:linear-gradient(to bottom, #000 35%, transparent);
+}
+
+
+
+/* =====================================================================
+   MÀN HÌNH CHÀO: logo hiện + ánh sáng quét
+===================================================================== */
+
+.splash{
+  position:fixed; inset:0; z-index:10050;
+  display:grid; place-items:center;
+  background:radial-gradient(520px 380px at 50% 42%, rgba(47,107,255,.3), transparent 70%), #04070f;
+  transition:opacity .7s var(--ease), visibility .7s;
+}
+.splash.hide{ opacity:0; visibility:hidden; }
+.splash-inner{ display:grid; justify-items:center; gap:28px; }
+
+.splash-logo{
+  width:104px; height:104px; object-fit:contain;
+  -webkit-mask-image:linear-gradient(110deg,#000 38%,rgba(0,0,0,.3) 50%,#000 62%);
+  mask-image:linear-gradient(110deg,#000 38%,rgba(0,0,0,.3) 50%,#000 62%);
+  -webkit-mask-size:260% 100%; mask-size:260% 100%;
+  animation:
+    splashIn .9s var(--ease) both,
+    splashShine 1.8s linear .5s infinite,
+    splashPulse 2.2s ease-in-out .9s infinite;
+}
+
+.splash-bar{ position:relative; width:120px; height:3px; border-radius:3px; background:rgba(255,255,255,.12); overflow:hidden; }
+.splash-bar::after{
+  content:""; position:absolute; inset:0 auto 0 0; width:40%; border-radius:3px;
+  background:linear-gradient(90deg,#6db8ff,#2f6bff);
+  animation:splashBar 1.2s ease-in-out infinite;
+}
+
+@keyframes splashIn{ from{ opacity:0; transform:scale(.7) translateY(10px); } to{ opacity:1; transform:none; } }
+@keyframes splashShine{ from{ -webkit-mask-position:120% 0; mask-position:120% 0; } to{ -webkit-mask-position:-20% 0; mask-position:-20% 0; } }
+@keyframes splashPulse{
+  0%,100%{ filter:drop-shadow(0 0 14px rgba(74,163,255,.45)); }
+  50%{ filter:drop-shadow(0 0 32px rgba(74,163,255,.95)); }
+}
+@keyframes splashBar{ from{ transform:translateX(-100%); } to{ transform:translateX(280%); } }
+
+
+/* =====================================================================
+   CHỦ ĐỀ XANH DƯƠNG  (đổi 2 màu --accent để đổi cả giao diện, vd xanh lá: #3ddc97 / #1fa86b)
+===================================================================== */
+
+:root{
+  --accent:#4aa3ff;
+  --accent-2:#2f6bff;
+  --grad:linear-gradient(135deg,#6db8ff,#2f6bff);
+  --navy:#04070f;
+}
+
+::selection{ background:rgba(74,163,255,.4); }
+body{ background:var(--navy); }
+body::after{
+  background:
+    radial-gradient(520px 320px at 15% -40px, rgba(47,107,255,.28), transparent 70%),
+    linear-gradient(to bottom, rgba(4,7,15,.3), var(--navy) 88%);
+}
+
+.topbar::before{ background:linear-gradient(to bottom, rgba(4,7,15,.8), rgba(4,7,15,0)); }
+.hero-scrim{ background:linear-gradient(to bottom, rgba(4,7,15,.92), rgba(4,7,15,.55) 45%, rgba(4,7,15,0)); }
+
+.search-box button{ background:var(--grad); color:#fff; box-shadow:0 6px 18px rgba(47,107,255,.45); }
+.player-controls .play-btn{ background:var(--grad); color:#fff; box-shadow:0 8px 24px rgba(47,107,255,.5); }
+.sleep-options button.active{ background:var(--grad); color:#fff; }
+.avatar-badge{ background:var(--grad); color:#fff; }
+.profile-name:focus{ border-bottom-color:#6db8ff; }
+a:focus-visible,button:focus-visible,input:focus-visible{ outline-color:#6db8ff; }
+
+.player-progress input[type="range"],
+.player-volume input[type="range"],
+.mini-progress input[type="range"]{
+  background:linear-gradient(to right,#6db8ff,#2f6bff var(--range-progress),rgba(255,255,255,.18) var(--range-progress),rgba(255,255,255,.18) 100%);
+}
+.player-progress input[type="range"]::-moz-range-progress,
+.player-volume input[type="range"]::-moz-range-progress,
+.mini-progress input[type="range"]::-moz-range-progress{ background:#2f6bff; }
+
+
+/* =====================================================================
+   LIQUID GLASS v3: kính ánh xanh, viền sáng chéo (trên-trái và dưới-phải) giống nhau ở mọi mặt kính
+===================================================================== */
+
+:root{
+  --glass-fill:linear-gradient(135deg, rgba(120,185,255,.14), rgba(255,255,255,.03));
+  --glass-sheen:linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,0) 42%);
+  --glass-line:rgba(255,255,255,.16);
+  --glass-shadow:
+    0 12px 32px rgba(6,24,80,.42),
+    inset 1.5px 1.5px 1px -0.5px rgba(255,255,255,.7),
+    inset -1.5px -1.5px 1px -0.5px rgba(170,210,255,.45),
+    inset 0 0 0 1px rgba(255,255,255,.09),
+    inset 0 0 24px rgba(110,175,255,.11);
+}
+
+.tabbar,
+.mini-player,
+.listen-stats > div,
+.profile-card,
+.upload-box,
+.profile .upload-box,
+.playlist-card,
+.search-box,
+.suggestions,
+.section-title-action,
+.hero-play,
+.topbar-avatar,
+.music-player{
+  background:var(--glass-sheen), var(--glass-fill);
+  border:1px solid var(--glass-line);
+  -webkit-backdrop-filter:blur(12px) saturate(200%) brightness(1.1);
+  backdrop-filter:blur(12px) saturate(200%) brightness(1.1);
+  box-shadow:var(--glass-shadow);
+}
+
+.music-player{ background:var(--glass-sheen), rgba(10,22,48,.42); }
+.suggestions{ background:rgba(10,20,42,.9); }
+
+.hero-play{ background:linear-gradient(135deg, rgba(130,195,255,.5), rgba(47,107,255,.26)); }
+
+.tabbar button.active{
+  background:linear-gradient(135deg, rgba(130,195,255,.55), rgba(47,107,255,.28));
+  box-shadow:
+    inset 1.5px 1.5px 1px -0.5px rgba(255,255,255,.75),
+    inset -1.5px -1.5px 1px -0.5px rgba(190,225,255,.5),
+    0 6px 18px rgba(30,90,220,.4);
+}
+
+.sleep-options button,
+.lib-row button{
+  background:linear-gradient(135deg, rgba(130,185,255,.2), rgba(255,255,255,.05));
+  box-shadow:inset 1px 1px 0 rgba(255,255,255,.5), inset -1px -1px 0 rgba(170,210,255,.3);
+}
+
+.search-box:focus-within{
+  border-color:rgba(130,195,255,.75);
+  box-shadow:var(--glass-shadow), 0 0 0 4px rgba(74,163,255,.2);
+}
+
+
+
+/* =====================================================================
+   CHUYỂN TAB MƯỢT: viên kính trượt + trang vào dần
+===================================================================== */
+
+.tabbar-pill{
+  position:absolute; top:6px; bottom:6px; left:0;
+  border-radius:28px; pointer-events:none;
+  background:linear-gradient(135deg, rgba(130,195,255,.55), rgba(47,107,255,.28));
+  box-shadow:
+    inset 1.5px 1.5px 1px -0.5px rgba(255,255,255,.75),
+    inset -1.5px -1.5px 1px -0.5px rgba(190,225,255,.5),
+    0 6px 18px rgba(30,90,220,.4);
+  will-change:transform;
+}
+
+.tabbar button{ position:relative; z-index:1; }
+/* viên kính riêng lo phần nền nên nút đang chọn không tự vẽ nền nữa */
+.tabbar button.active{ background:none; box-shadow:none; }
+
+/* Mỗi lần đổi trang, nội dung mới nhẹ nhàng hiện lên */
+.main > [data-page]:not(.page-off):not(.hero){ animation:pageIn .3s ease-out both; }
+@keyframes pageIn{ from{ opacity:0; } to{ opacity:1; } }
+
+/* =====================================================================
+   GỢI Ý TÌM KIẾM
+===================================================================== */
+
+.suggestions{ max-height:min(62vh, 440px); overflow-y:auto; }
+.suggestion-info strong{ font-weight:500; }
+.suggestion-info strong b{ color:#6db8ff; font-weight:800; }
+.suggestion-info span:empty{ display:none; }
+
+
+
+/* =====================================================================
+   LOAD KHI TÌM KIẾM
+===================================================================== */
+
+.skeleton-row{
+  display:flex; align-items:center; gap:14px;
+  padding:12px 0; border-bottom:1px solid rgba(255,255,255,.08);
+}
+.sk-thumb,
+.sk-lines i{
+  background:linear-gradient(90deg, rgba(255,255,255,.06) 25%, rgba(130,190,255,.2) 50%, rgba(255,255,255,.06) 75%);
+  background-size:200% 100%;
+  animation:skShimmer 1.3s linear infinite;
+}
+.sk-thumb{ flex:none; width:128px; aspect-ratio:16/9; border-radius:12px; }
+.sk-lines{ flex:1; display:grid; gap:10px; }
+.sk-lines i{ display:block; height:14px; border-radius:7px; }
+.sk-lines i:nth-child(2){ width:55%; height:11px; }
+@keyframes skShimmer{ from{ background-position:200% 0; } to{ background-position:-200% 0; } }
+
+.search-box button{ position:relative; }
+.search-box button.is-loading{ color:transparent; pointer-events:none; }
+.search-box button.is-loading::after{
+  content:""; position:absolute; inset:0; margin:auto;
+  width:20px; height:20px; border-radius:50%;
+  border:2.5px solid rgba(255,255,255,.35); border-top-color:#fff;
+  animation:searchSpin .7s linear infinite;
+}
+@keyframes searchSpin{ to{ transform:rotate(360deg); } }
